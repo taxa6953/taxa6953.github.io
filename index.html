@@ -57,7 +57,7 @@
   <!-- کارت تبریک -->
   <div class="relative z-10 bg-white rounded-2xl shadow-md max-w-xl mx-auto overflow-hidden">
     <div class="aspect-w-3 aspect-h-4">
-      <img src="image-card1.PNG" alt="تصویر کارت" class="w-full h-full object-cover rounded-t-2xl" />
+      <img src="image-card2.PNG" alt="تصویر کارت" class="w-full h-full object-cover rounded-t-2xl" />
     </div>
     <div class="p-6">
       <h1 class="text-2xl font-extrabold text-pink-700 mb-4 text-center">جشن گُل‌های معطر خدا، روز دختران پاک</h1>
@@ -79,24 +79,17 @@
         <p class="text-center mt-6 text-pink-600 font-bold text-lg">🎀 یَا فَاطِمَةُ اشْفَعِی لَنَا فِی الْجَنَّةِ 🎀</p>
         <p class="text-center mt-2 text-green-600 text-base font-semibold">🌺 روز دختر مبارک 🌺</p>
       </div>
+      <audio controls class="block w-full mt-4">
+        <source src="voice2.mp3" type="audio/mpeg">
+        مرورگر شما از صدا پشتیبانی نمی‌کند.
+      </audio>
     </div>
     <footer class="text-center py-2 bg-gray-50 text-xs text-gray-500">
       طراحی و پیاده‌سازی: مهندس طاها سرگزی
     </footer>
   </div>
 
-  <!-- ریزش گلبرگ‌ها -->
-  <script>
-    const petalCount = 30;
-    for (let i = 0; i < petalCount; i++) {
-      const petal = document.createElement('div');
-      petal.classList.add('petal');
-      petal.style.left = Math.random() * 100 + 'vw';
-      petal.style.animationDuration = (5 + Math.random() * 5) + 's';
-      petal.style.animationDelay = (Math.random() * 5) + 's';
-      document.body.appendChild(petal);
-    }
-  </script>
+  
 
 </body>
 </html>
