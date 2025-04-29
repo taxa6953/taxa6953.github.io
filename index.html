@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>جشن گل‌های معطر خدا</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Vazir', sans-serif;
+      background-color: #fef9f9;
+      padding: 2rem;
+      overflow-x: hidden;
+    }
+
+    .preview-content {
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      line-height: 1.9;
+      text-align: justify;
+      direction: rtl;
+    }
+
+    .preview-content p {
+      margin-bottom: 0.75rem;
+    }
+
+    .petal {
+      position: fixed;
+      top: -50px;
+      width: 30px;
+      height: 30px;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/55/Sakura_petal.png');
+      background-size: cover;
+      opacity: 0.8;
+      animation: fall linear infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- کارت تبریک -->
+  <div class="relative z-10 bg-white rounded-2xl shadow-md max-w-xl mx-auto overflow-hidden">
+    <div class="aspect-w-3 aspect-h-4">
+      <img src="image-card1.PNG" alt="تصویر کارت" class="w-full h-full object-cover rounded-t-2xl" />
+    </div>
+    <div class="p-6">
+      <h1 class="text-2xl font-extrabold text-pink-700 mb-4 text-center">جشن گُل‌های معطر خدا، روز دختران پاک</h1>
+      <div class="preview-content text-gray-800 text-base leading-loose">
+        <p>امروز، روز تجلی نور و مهربانی است؛ روزی که به پاسداشت مقام بلند حضرت فاطمه معصومه (س)، الگوی صبر، عصمت و کرامت، نامگذاری شده است. دختران ایران، وارثان حقیقی این ده کرامتِ آسمانی هستند:</p>
+        <ul class="list-disc pr-5">
+          <li><strong>کرامتِ ایمان:</strong> همچون معصومه‌(س)، قلبی سرشار از نور یقین داشته باشید.</li>
+          <li><strong>کرامتِ دانش:</strong> جوینده‌ی علم باشید، چرا که ایشان مظهر حکمت بودند.</li>
+          <li><strong>کرامتِ عصمت:</strong> پاکدامنی و اصالت را زینت روح خود کنید.</li>
+          <li><strong>کرامتِ مهربانی:</strong> همچون باران نرمی، دل‌ها را زلال کنید.</li>
+          <li><strong>کرامتِ صبر:</strong> در سختی‌ها استوار بمانید، چنان که ایشان در مسیر ولایت استوار ماندند.</li>
+          <li><strong>کرامتِ دعا:</strong> دست‌های معصومه‌(س) همیشه به دعا بلند بود؛ شما نیز نیایش را پناهگاه خود بدانید.</li>
+          <li><strong>کرامتِ مهمان‌نوازی:</strong> شهر قم به برکت وجود ایشان مأمن عاشقان شد؛ شما نیز گرمابخش دل‌ها باشید.</li>
+          <li><strong>کرامتِ تواضع:</strong> فروتنی را تاج افتخار زندگی خود قرار دهید.</li>
+          <li><strong>کرامتِ استقامت:</strong> راه حق را، هرچند دشوار، با عشق ادامه دهید.</li>
+          <li><strong>کرامتِ شفاعت:</strong> همان‌گونه که ایشان شفیعه‌ی روز جزا هستند، شما نیز پشتیبان نیکی در جهان باشید.</li>
+        </ul>
+        <p class="mt-4">دختران ایران! شما گُل‌های باغ ولایت و یادآور "کریمه‌ی اهل بیت" هستید. روزتان سرشار از برکت و سربلندی باد!</p>
+        <p class="text-center mt-6 text-pink-600 font-bold text-lg">🎀 یَا فَاطِمَةُ اشْفَعِی لَنَا فِی الْجَنَّةِ 🎀</p>
+        <p class="text-center mt-2 text-green-600 text-base font-semibold">🌺 روز دختر مبارک 🌺</p>
+      </div>
+    </div>
+    <footer class="text-center py-2 bg-gray-50 text-xs text-gray-500">
+      طراحی و پیاده‌سازی: مهندس طاها سرگزی
+    </footer>
+  </div>
+
+  <!-- ریزش گلبرگ‌ها -->
+  <script>
+    const petalCount = 30;
+    for (let i = 0; i < petalCount; i++) {
+      const petal = document.createElement('div');
+      petal.classList.add('petal');
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDuration = (5 + Math.random() * 5) + 's';
+      petal.style.animationDelay = (Math.random() * 5) + 's';
+      document.body.appendChild(petal);
+    }
+  </script>
+
+</body>
+</html>
