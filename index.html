@@ -1,95 +1,76 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <!-- Primary Meta Tags -->
+  <title>روز معلم - تقدیر از دکتر مجید محبی</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>روز معلم مبارک – دکتر مجید محبی</title>
-  <meta name="description" content="تبریک رسمی روز معلم به استاد گرانقدر دکتر مجید محبی" />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://your-domain.com/teacher-day/" />
-  <meta property="og:title" content="روز معلم مبارک – دکتر مجید محبی" />
-  <meta property="og:description" content="تبریک رسمی روز معلم به استاد گرانقدر دکتر مجید محبی" />
-  <meta property="og:image" content="https://your-domain.com/assets/teacher-card.jpg" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="روز معلم مبارک – دکتر مجید محبی" />
-  <meta name="twitter:description" content="تبریک رسمی روز معلم به استاد گرانقدر دکتر مجید محبی" />
-  <meta name="twitter:image" content="https://your-domain.com/assets/teacher-card.jpg" />
-
-  <!-- Tailwind & Font -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet" />
-
   <style>
     body {
       font-family: 'Vazir', sans-serif;
-      background: #eef2f7; /* خاکستری خیلی ملایم */
-      margin: 0;
-      padding: 2rem 1rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+      background-color: #fef9f9;
+      padding: 2rem;
+      overflow-x: hidden;
     }
-    .card {
-      background: #ffffff; /* سفید کارت */
-      border-radius: 1rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      max-width: 600px;
-      width: 100%;
-      overflow: hidden;
-    }
-    .header {
-      background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%); /* گرادیانت آرام */
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-    .header h1 {
-      color: #ffffff;
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin: 0;
-    }
-    .body {
-      padding: 2rem 1.5rem;
-      color: #333333;
-      line-height: 1.7;
+
+    .preview-content {
+      white-space: normal;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      line-height: 1.9;
       text-align: justify;
+      direction: rtl;
     }
-    .body p {
-      margin-bottom: 1rem;
+
+    .preview-content p {
+      margin-bottom: 0.75rem;
     }
-    .footer {
-      background: #f5f7fa;
-      padding: 1rem;
-      text-align: center;
-      font-size: 0.875rem;
-      color: #666666;
+
+    .petal {
+      position: fixed;
+      top: -50px;
+      width: 30px;
+      height: 30px;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/55/Sakura_petal.png');
+      background-size: cover;
+      opacity: 0.8;
+      animation: fall linear infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <div class="header">
-      <h1>روز معلم گرامی، بر دکتر مجید محبی مبارک باد</h1>
+  <!-- کارت تبریک روز معلم -->
+  <div class="relative z-10 bg-white rounded-2xl shadow-md max-w-xl mx-auto overflow-hidden">
+    <div class="aspect-w-3 aspect-h-4">
+      <img src="image-card3.PNG" alt="تصویر کارت" class="w-full h-full object-cover rounded-t-2xl" />
     </div>
-    <div class="body">
-      <p>با سلام و احترام خدمت جناب آقای <strong>دکتر مجید محبی</strong>،</p>
-      <p>به مناسبت فرا رسیدن روز معلم، وظیفهٔ خود می‌دانم از زحمات بی‌دریغ، دانش‌افزایی مستمر و راهنمایی‌های ارزشمند شما صمیمانه قدردانی کنم. حضور شما در کلاس‌های درس، فرصتی طلایی برای گشایش دریچه‌های تازه‌ای از علم و پژوهش بوده و با رویکرد تحلیلی و نگرش انتقادی، توانمندی‌های پژوهشی و تفکر نقادانهٔ ما را به شکوفایی رساندید.</p>
-      <p>تخصص و اخلاق حرفه‌ای شما، الگوی بی‌بدیلی است که در تمام دوران تحصیلی و نیز در مسیر آیندهٔ علمی ما، چراغ راه خواهد بود. بی‌تردید انگیزه و پشتکار شما، شتاب‌دهندهٔ پیشرفت دانشجویان است و ما همواره قدردان حمایت‌ها و دل‌سوزی‌های شما خواهیم بود.</p>
-      <p>امید دارم با تلاش و پشتکار، بخشی از آنچه از شما آموخته‌ام را در مسیر علم و پژوهش به کار ببرم و هر روز گامی بهتر در مسیر تعمیق دانش بردارم. از خدای متعال برایتان تندرستی، شادکامی و موفقیت‌های روزافزون مسئلت دارم.</p>
-      <p class="text-center font-semibold mt-6">روز معلم مبارک باد.</p>
+    <div class="p-6">
+      <h1 class="text-2xl font-extrabold text-indigo-700 mb-4 text-center">تقدیر ویژه به مناسبت روز معلم</h1>
+      <div class="preview-content text-gray-800 text-base leading-loose">
+        <p>با سلام و احترام خدمت جناب آقای دکتر مجید محبی،</p>
+        <p>به مناسبت فرارسیدن روز معلم، بر خود لازم می‌دانم از زحمات بی‌دریغ، دانش‌افزایی مستمر و راهنمایی‌های ارزشمند شما صمیمانه تقدیر کنم. هر جلسهٔ درس در محضر شما، فرصتی طلایی برای گشایش دریچه‌های تازه‌ای از علم و پژوهش بود و با رویکرد تحلیلی و نگرش انتقادی، توانایی‌های پژوهشی و تفکر نقادانهٔ ما را به شکوفایی رساندید. تخصص و اخلاق حرفه‌ای شما، الگوی بی‌بدیلی است که در تمام دوران تحصیلی و نیز در مسیر آیندهٔ علمی ما، چراغ راه خواهد بود.</p>
+        <p>امید آن دارم با تلاش و پشتکار، بتوانم اندکی از آنچه از شما آموخته‌ام به کار بندم و پاسخگوی اعتماد و محبت شما باشم. از خدای متعال برایتان سلامت، شادکامی و موفقیت‌های روزافزون مسئلت دارم.</p>
+        <p class="text-center mt-6 text-green-700 font-bold text-lg">روز معلم بر شما مبارک باد</p>
+      </div>
     </div>
-    <div class="footer">
-      با سپاس و ارادت،<br>
-      [طاها سرگزی]
-    </div>
+    <footer class="text-center py-2 bg-gray-50 text-xs text-gray-500">
+      طراحی و پیاده‌سازی: مهندس طاها سرگزی
+    </footer>
   </div>
-
 </body>
 </html>
