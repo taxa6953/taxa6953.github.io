@@ -2,86 +2,97 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>صفحه شخصی من</title>
-  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn-font/dist/font-face.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مبلمان مدرن</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet" type="text/css" />
   <style>
-    body {
-      margin: 0;
-      font-family: Vazirmatn, sans-serif;
-      background: #f9f9f9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+    body { font-family: Vazir, sans-serif; }
+    .glass {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 1rem;
     }
-
-    .card {
-      background: white;
-      padding: 32px;
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-      max-width: 400px;
-      text-align: center;
-    }
-
-    .profile-img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 16px;
-      border: 4px solid #eee;
-    }
-
-    .name {
-      font-size: 24px;
-      font-weight: bold;
-      color: #333;
-    }
-
-    .title {
-      font-size: 16px;
-      color: #666;
-      margin: 8px 0 16px;
-    }
-
-    .bio {
-      font-size: 14px;
-      color: #444;
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-
-    .contact {
-      font-size: 14px;
-      color: #333;
-    }
-
-    .contact a {
-      color: #0077cc;
-      text-decoration: none;
-    }
-
-    .contact a:hover {
-      text-decoration: underline;
-    }
+    .fade-enter { opacity: 0; transform: scale(0.95); }
+    .fade-enter-active { opacity: 1; transform: scale(1); transition: all 0.5s ease; }
+    .fade-leave { opacity: 1; transform: scale(1); }
+    .fade-leave-active { opacity: 0; transform: scale(0.95); transition: all 0.5s ease; }
   </style>
 </head>
-<body>
-  <div class="card">
-    <img src="https://via.placeholder.com/120" alt="Profile" class="profile-img" />
-    <div class="name">نام و نام خانوادگی</div>
-    <div class="title">عنوان شغلی یا تخصص (مثلاً: طراح وب)</div>
-    <div class="bio">
-      چند خط درباره خودت بنویس. مثلاً:
-      <br>
-      علاقه‌مند به طراحی رابط کاربری، توسعه وب، و کار تیمی. هدف من خلق تجربه‌های دیجیتال ساده و زیباست.
+<body class="bg-gray-100">
+
+  <!-- Hero Section with Responsive Background -->
+  <section class="relative min-h-screen flex flex-col justify-center items-center px-4 bg-cover bg-center" style="background-image: url('./images/bg-desktop.jpg');">
+    <div class="absolute inset-0 md:hidden" style="background-image: url('./images/bg-mobile.jpg'); background-size: cover; background-position: center;"></div>
+
+    <!-- Slide Number and Progress Bar -->
+    <div class="absolute top-6 right-6 left-6 flex items-center justify-between z-10">
+      <span class="text-white text-sm">۰{{ currentSlide + 1 }}</span>
+      <div class="flex-1 mx-4 h-1 bg-white bg-opacity-30 rounded-full overflow-hidden">
+        <div id="progressBar" class="h-full bg-white transition-all duration-500" style="width: 0%;"></div>
+      </div>
+      <span class="text-white text-sm">۰{{ slides.length }}</span>
     </div>
-    <div class="contact">
-      📧 ایمیل: <a href="mailto:you@example.com">you@example.com</a><br>
-      🌐 وب‌سایت: <a href="https://yourwebsite.com" target="_blank">yourwebsite.com</a>
+
+    <!-- Slides Container -->
+    <div class="relative w-full max-w-4xl flex items-center justify-center">
+      <div id="slider" class="relative w-full">
+        <!-- Slides will be injected here -->
+      </div>
+
+      <!-- Navigation Button -->
+      <button onclick="nextSlide()" class="absolute left-0 bottom-10 w-10 h-10 bg-white bg-opacity-60 hover:bg-opacity-90 transition rounded-full shadow-lg flex items-center justify-center">
+        <span class="text-xl">←</span>
+      </button>
     </div>
-  </div>
+  </section>
+
+  <script>
+    const slides = [
+      {
+        title: "مبلمان با کیفیت",
+        description: "طراحی مدرن مناسب هر فضای منزل شما.",
+        image: "images/chair1.png"
+      },
+      {
+        title: "راحتی و زیبایی",
+        description: "ترکیب شگفت‌انگیز راحتی با طراحی زیبا.",
+        image: "images/chair2.png"
+      },
+      {
+        title: "گزینه‌ای برای هر سلیقه",
+        description: "تنوع در طرح و رنگ مناسب همه سبک‌ها.",
+        image: "images/chair3.png"
+      }
+    ];
+
+    let currentSlide = 0;
+    const slider = document.getElementById("slider");
+    const progressBar = document.getElementById("progressBar");
+
+    function renderSlide(index) {
+      const slide = slides[index];
+      slider.innerHTML = `
+        <div class="glass p-6 max-w-md mx-auto text-right text-white animate-fade-in">
+          <img src="${slide.image}" alt="${slide.title}" class="rounded-lg mb-4 w-full h-48 object-contain" />
+          <h2 class="text-2xl font-bold mb-2">${slide.title}</h2>
+          <p class="mb-4 text-sm">${slide.description}</p>
+          <button class="bg-white text-black px-4 py-2 rounded-full shadow">مشاهده محصول</button>
+        </div>
+      `;
+      progressBar.style.width = `${((index + 1) / slides.length) * 100}%`;
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      renderSlide(currentSlide);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderSlide(currentSlide);
+    });
+  </script>
 </body>
 </html>
+
