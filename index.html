@@ -1,98 +1,89 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>مبلمان مدرن</title>
+  <meta charset="UTF-8">
+  <title>Furniture Slider</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet" type="text/css" />
   <style>
-    body { font-family: Vazir, sans-serif; }
     .glass {
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-radius: 1rem;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
     }
-    .fade-enter { opacity: 0; transform: scale(0.95); }
-    .fade-enter-active { opacity: 1; transform: scale(1); transition: all 0.5s ease; }
-    .fade-leave { opacity: 1; transform: scale(1); }
-    .fade-leave-active { opacity: 0; transform: scale(0.95); transition: all 0.5s ease; }
+    .active-btn {
+      background: white !important;
+    }
   </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-200 flex items-center justify-center min-h-screen font-sans">
 
-  <!-- Hero Section with Responsive Background -->
-  <section class="relative min-h-screen flex flex-col justify-center items-center px-4 bg-cover bg-center" style="background-image: url('./images/bg-desktop.jpg');">
-    <div class="absolute inset-0 md:hidden" style="background-image: url('./images/bg-mobile.jpg'); background-size: cover; background-position: center;"></div>
+  <div class="w-[95%] max-w-5xl p-6">
 
-    <!-- Slide Number and Progress Bar -->
-    <div class="absolute top-6 right-6 left-6 flex items-center justify-between z-10">
-      <span class="text-white text-sm">۰{{ currentSlide + 1 }}</span>
-      <div class="flex-1 mx-4 h-1 bg-white bg-opacity-30 rounded-full overflow-hidden">
-        <div id="progressBar" class="h-full bg-white transition-all duration-500" style="width: 0%;"></div>
+    <!-- Progress Bar -->
+    <div class="flex items-center justify-between mb-6 text-white font-bold">
+      <span id="currentIndex">01</span>
+      <div class="flex-1 mx-4 bg-white/40 h-[2px] relative">
+        <div id="progress" class="bg-white h-[2px] w-1/4"></div>
       </div>
-      <span class="text-white text-sm">۰{{ slides.length }}</span>
+      <span id="totalIndex">04</span>
     </div>
 
-    <!-- Slides Container -->
-    <div class="relative w-full max-w-4xl flex items-center justify-center">
-      <div id="slider" class="relative w-full">
-        <!-- Slides will be injected here -->
+    <!-- Cards Container -->
+    <div class="flex gap-6">
+
+      <!-- Main Card -->
+      <div class="glass rounded-3xl p-6 w-[350px]">
+        <img src="https://via.placeholder.com/350x250" class="rounded-2xl mb-4 w-full h-[220px] object-cover" />
+        <h2 class="text-xl font-bold text-white mb-2">مبلمان باکیفیت</h2>
+        <p class="text-white/80 mb-4">کشف طرح‌های ماندگار برای هر اتاق خانه شما</p>
+        <div class="flex items-center gap-3">
+          <button class="bg-white text-gray-800 rounded-full px-5 py-2 font-semibold">Shop Now</button>
+          <button class="glass w-10 h-10 rounded-full flex items-center justify-center text-white">♡</button>
+        </div>
       </div>
 
-      <!-- Navigation Button -->
-      <button onclick="nextSlide()" class="absolute left-0 bottom-10 w-10 h-10 bg-white bg-opacity-60 hover:bg-opacity-90 transition rounded-full shadow-lg flex items-center justify-center">
-        <span class="text-xl">←</span>
-      </button>
+      <!-- Side Card -->
+      <div class="glass rounded-3xl w-[220px] h-[300px] flex items-center justify-center">
+        <img src="https://via.placeholder.com/200x250" class="rounded-2xl object-cover" />
+      </div>
     </div>
-  </section>
+
+    <!-- Navigation Buttons -->
+    <div class="flex justify-center gap-4 mt-8">
+      <button id="prevBtn" class="glass w-12 h-12 rounded-full flex items-center justify-center text-white">←</button>
+      <button id="nextBtn" class="glass w-12 h-12 rounded-full flex items-center justify-center text-white">→</button>
+    </div>
+
+  </div>
 
   <script>
-    const slides = [
-      {
-        title: "مبلمان با کیفیت",
-        description: "طراحی مدرن مناسب هر فضای منزل شما.",
-        image: "Samsung Galaxy Z Fold 2 wallpapers 8.jpg"
-      },
-      {
-        title: "راحتی و زیبایی",
-        description: "ترکیب شگفت‌انگیز راحتی با طراحی زیبا.",
-        image: "Samsung Galaxy Z Fold 2 wallpapers 8.jpg"
-      },
-      {
-        title: "گزینه‌ای برای هر سلیقه",
-        description: "تنوع در طرح و رنگ مناسب همه سبک‌ها.",
-        image: "Samsung Galaxy Z Fold 2 wallpapers 8.jpg"
-      }
-    ];
+    let current = 1;
+    const total = 4;
+    const currentIndex = document.getElementById("currentIndex");
+    const progress = document.getElementById("progress");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
 
-    let currentSlide = 0;
-    const slider = document.getElementById("slider");
-    const progressBar = document.getElementById("progressBar");
-
-    function renderSlide(index) {
-      const slide = slides[index];
-      slider.innerHTML = `
-        <div class="glass p-6 max-w-md mx-auto text-right text-white animate-fade-in">
-          <img src="${slide.image}" alt="${slide.title}" class="rounded-lg mb-4 w-full h-48 object-contain" />
-          <h2 class="text-2xl font-bold mb-2">${slide.title}</h2>
-          <p class="mb-4 text-sm">${slide.description}</p>
-          <button class="bg-white text-black px-4 py-2 rounded-full shadow">مشاهده محصول</button>
-        </div>
-      `;
-      progressBar.style.width = `${((index + 1) / slides.length) * 100}%`;
+    function updateUI() {
+      currentIndex.textContent = String(current).padStart(2, "0");
+      progress.style.width = `${(current / total) * 100}%`;
     }
 
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % slides.length;
-      renderSlide(currentSlide);
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      renderSlide(currentSlide);
+    nextBtn.addEventListener("click", () => {
+      if (current < total) current++;
+      updateUI();
+      nextBtn.classList.add("active-btn");
+      prevBtn.classList.remove("active-btn");
     });
+
+    prevBtn.addEventListener("click", () => {
+      if (current > 1) current--;
+      updateUI();
+      prevBtn.classList.add("active-btn");
+      nextBtn.classList.remove("active-btn");
+    });
+
+    updateUI();
   </script>
 </body>
 </html>
-
