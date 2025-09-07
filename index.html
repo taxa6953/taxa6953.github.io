@@ -25,7 +25,7 @@
       border-radius: 20px;
       padding: 40px 20px;
       text-align: center;
-      max-width: 360px;
+      max-width: 380px;
       width: 90%;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     }
@@ -47,6 +47,13 @@
       display: block;
     }
 
+    h1 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
     .buttons {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -57,19 +64,25 @@
     .btn {
       background: rgba(255, 255, 255, 0.2);
       border-radius: 12px;
-      padding: 12px;
+      padding: 10px;
       text-decoration: none;
       color: #fff;
       font-weight: 500;
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 8px;
       transition: 0.3s;
     }
 
     .btn:hover {
       background: rgba(255, 255, 255, 0.35);
       transform: translateY(-3px);
+    }
+
+    .btn img {
+      width: 28px;
+      height: 28px;
     }
 
     footer {
@@ -82,15 +95,25 @@
 <body>
   <div class="container">
     <div class="logo">
-      <img src="https://i.postimg.cc/TPHSmtzK/logo.png" alt="لوگو">
+      <img src="لوگوی-خودت.png" alt="لوگو">
     </div>
     <h1>هیئت نجات غریق و غواصی استان سیستان و بلوچستان ۱۴۰۴</h1>
+
     <div class="buttons">
-      <a href="#" class="btn">ایتا</a>
-      <a href="#" class="btn">واتساپ</a>
-      <a href="#" class="btn">تلگرام</a>
-      <a href="#" class="btn">وبسایت</a>
+      <a href="https://eitaa.com/YourPage" class="btn" target="_blank">
+        <img src="eitaa-icon.png" alt="ایتا"> ایتا
+      </a>
+      <a href="https://wa.me/YourNumber" class="btn" target="_blank">
+        <img src="whatsapp-icon.png" alt="واتساپ"> واتساپ
+      </a>
+      <a href="https://t.me/YourChannel" class="btn" target="_blank">
+        <img src="telegram-icon.png" alt="تلگرام"> تلگرام
+      </a>
+      <a href="https://yourwebsite.com" class="btn" target="_blank">
+        <img src="web-icon.png" alt="وبسایت"> وبسایت
+      </a>
     </div>
+
     <footer>طراحی شده توسط مهندس طاها سرگزی</footer>
   </div>
 </body>
