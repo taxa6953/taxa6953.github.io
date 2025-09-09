@@ -19,17 +19,36 @@
       color: #fff;
     }
 
-    .container {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
-      border-radius: 20px;
-      padding: 40px 20px;
-      text-align: center;
-      max-width: 380px;
-      width: 90%;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    }
+  .container {
+  position: relative; /* برای pseudo-element */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 40px 20px;
+  text-align: center;
+  max-width: 380px;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  }
+    .container::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent 60%);
+  animation: moveLight 8s infinite linear;
+  pointer-events: none;
+}
 
+@keyframes moveLight {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(80px,80px); }
+}
     .logo {
       margin: 0 auto 25px;
       width: 120px;
@@ -62,23 +81,27 @@
     }
 
     .btn {
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 12px;
-      padding: 10px;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: 0.3s;
-    }
+.btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  padding: 12px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: 0.4s;
+  backdrop-filter: blur(10px);
+}
 
-    .btn:hover {
-      background: rgba(255, 255, 255, 0.35);
-      transform: translateY(-3px);
-    }
+.btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(255,255,255,0.2);
+}
 
     .btn img {
       width: 28px;
