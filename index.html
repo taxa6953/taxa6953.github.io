@@ -24,7 +24,7 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  overflow: hidden; /* ⬅ این خط رو اضافه کن */
+  overflow: hidden; /* ⬅ اضافه شد */
 }
 
     .container {
@@ -84,23 +84,21 @@ body {
     }
 
     /* --- بخش محصولات --- */
-    .product-showcase-area {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      width: 100%;
-      max-height: calc(100vh - 140px); /* کارت‌ها از زیر هدر رد میشن */
-      overflow-y: auto;
-      padding-bottom: 20px;
+.product-showcase-area {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+  padding-bottom: 20px;
 
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
-    }
-
-    .product-showcase-area::-webkit-scrollbar {
-      width: 8px;
-    }
+  scrollbar-width: none; /* ⬅ مخفی فایرفاکس */
+}
+.product-showcase-area::-webkit-scrollbar {
+  display: none; /* ⬅ مخفی کروم/سافاری */
+}
     .product-showcase-area::-webkit-scrollbar-thumb {
       background-color: rgba(255, 255, 255, 0.5);
       border-radius: 8px;
@@ -134,20 +132,20 @@ body {
       display: block;
     }
 
-    .action-button {
-      position: absolute;
-      bottom: 12px;
-      left: 12px;
-      width: 42px;
-      height: 42px;
-      background: white;
-      border-radius: 12px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: transform 0.2s ease, background 0.2s ease;
-      z-index: 2;
-    }
+.action-button {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  width: 42px;
+  height: 42px;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 2; /* بالاتر از تو رفتگی */
+}
     .action-button:hover {
       background: #f0f0f0;
       transform: scale(1.05);
