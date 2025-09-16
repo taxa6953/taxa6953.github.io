@@ -80,7 +80,75 @@
     height: 4px; /* ضخامت خط */
     background-color: rgba(255, 255, 255, 0.3); /* رنگ سفید با شفافیت */
 }
-        
+            /* --- استایل‌های اصلی بدنه و کانتینر --- */
+        body {
+            font-family: sans-serif;
+            background: linear-gradient(135deg, #FF9500, #FF5F6D);
+            min-height: 100vh;
+            padding: 0; /* حذف padding از body */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* محتوا را در مرکز افقی قرار می‌دهد */
+            justify-content: flex-start; /* محتوا را به بالا می‌چسباند */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px; /* اضافه کردن padding افقی به container */
+        }
+
+        /* --- استایل خط جداکننده (Divider) --- */
+        .header-divider {
+            width: 100%;
+            max-width: 1200px; /* برای هماهنگی با عرض هدر */
+            margin: 20px auto 0 auto;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.3);
+            align-self: center; /* برای اینکه خط در صورت وجود flex-direction: column در body وسط بماند */
+        }
+
+        /* --- استایل‌های جدید برای بخش نمایش محصولات --- */
+
+        /* کانتینر اصلی برای کارت‌های محصولات که قابلیت اسکرول دارد */
+        .product-showcase-area {
+            margin-top: 30px; /* فاصله از خط جداکننده */
+            display: flex;
+            flex-direction: column; /* چیدمان عمودی کارت‌ها */
+            gap: 30px; /* فاصله بین هر کارت محصول */
+            width: 100%; /* عرض کامل container را می‌گیرد */
+            
+            /* برای قابلیت اسکرول عمودی */
+            max-height: calc(100vh - 140px); /* ارتفاع حداکثری برای ناحیه اسکرول. این مقدار را بر اساس ارتفاع هدر و خط جداکننده خود تنظیم کنید. */
+            overflow-y: auto; /* اسکرول عمودی را فعال می‌کند */
+            padding-bottom: 20px; /* کمی فضای خالی در پایین ناحیه اسکرول */
+
+            /* استایل اسکرول‌بار (اختیاری و برای مرورگرهای مدرن) */
+            scrollbar-width: thin; /* برای فایرفاکس */
+            scrollbar-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.1); /* برای فایرفاکس */
+        }
+
+        /* استایل برای اسکرول‌بار در مرورگرهای مبتنی بر وب‌کیت (کروم، سافاری) */
+        .product-showcase-area::-webkit-scrollbar {
+            width: 8px; /* عرض اسکرول‌بار */
+        }
+        .product-showcase-area::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1); /* رنگ زمینه اسکرول‌بار */
+            border-radius: 10px;
+        }
+        .product-showcase-area::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.5); /* رنگ "دسته" اسکرول‌بار */
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.1); /* حاشیه دور دسته */
+        }
+
+        /* استایل برای هر کارت محصول تکی */
+        .product-card {
+            position: relative; /* برای موقعیت‌دهی دکمه اکشن به صورت absolute */
+            background-color: #1a1a1a; /* رنگ پس‌زمینه کارت (تیره) */
+
+                
     </style>
 </head>
     
@@ -109,7 +177,48 @@
 
     <!-- این خط را اضافه میکند -->
     <div class="header-divider"></div>
-    
+        <div class="header-divider"></div>
+
+    <!-- بخش جدید برای نمایش محصولات با قابلیت اسکرول -->
+    <main class="product-showcase-area">
+        <!-- نمونه اول کارت محصول -->
+        <div class="product-card">
+            <a href="/product-details.html" class="product-image-wrapper">
+                <!-- آدرس عکس محصول بزرگ را اینجا قرار دهید -->
+                <img src="https://i.imgur.com/z26Hdv4.jpeg" alt="آیتم ویژه بازی 1">
+            </a>
+            <a href="/quick-buy.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
+                <!-- آیکون فلش برای دکمه کوچک -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>                      
+            </a>
+        </div>
+
+        <!-- نمونه دوم کارت محصول (برای نمایش قابلیت تکرار و اسکرول) -->
+        <div class="product-card">
+            <a href="/another-product.html" class="product-image-wrapper">
+                <!-- آدرس عکس محصول دوم را اینجا قرار دهید -->
+                <img src="https://i.imgur.com/4qJdY5K.jpeg" alt="آیتم ویژه بازی 2">
+            </a>
+            <a href="/another-quick-buy.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>                      
+            </a>
+        </div>
+
+        <!-- می‌توانید این ساختار 'div.product-card' را به تعداد دلخواه برای محصولات بیشتر تکرار کنید. -->
+        <!-- مثلاً برای دیدن اسکرول‌پذیری، ۱۰ بار آن را کپی کنید: -->
+        <!-- <div class="product-card"> ... </div> -->
+        <!-- <div class="product-card"> ... </div> -->
+        <!-- ... -->
+
+    </main>
+
+</div> <!-- این div پایانی مربوط به .container است -->
+</body>
+</html>
 </body>
 
 </html>
