@@ -1,239 +1,102 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>هیئت نجات غریق و غواصی سیستان و بلوچستان ۱۴۰۴</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هدر - فروشگاه SKY</title>
+    
+    <!-- Import Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
 
-    :root{
-      --glass-bg: rgba(255,255,255,0.10);
-      --glass-border: rgba(255,255,255,0.35);
-      --glass-shadow: rgba(0,0,0,0.35);
-      --sheen: rgba(255,255,255,0.18);
-      --light: rgba(255,255,255,0.45);
-      --x: 50%;
-      --y: 50%;
-    }
+    <style>
+        /* --- استایل‌های کلی و ریست --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    * { box-sizing: border-box; }
+        body {
+            font-family: sans-serif; /* یک فونت پیش‌فرض */
+            /* رنگ زمینه نارنجی مدرن با گرادینت */
+            background: linear-gradient(135deg, #FF9500, #FF5F6D);
+            min-height: 100vh; /* برای اینکه زمینه کل صفحه را بگیرد */
+            padding: 20px; /* فاصله از لبه‌های صفحه */
+        }
 
-    body{
-      margin:0;
-      min-height:100vh;
-      font-family:'Vazirmatn', sans-serif;
-      color:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      /* بک‌گراند اصلی */
-      background:
-        radial-gradient(1200px 800px at 20% 15%, rgba(0,170,255,0.25), transparent 60%),
-        radial-gradient(900px 600px at 80% 80%, rgba(255,0,200,0.18), transparent 60%),
-        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover no-repeat fixed;
-      position: relative;
-    }
+        /* --- استایل هدر اصلی --- */
+        .main-header {
+            display: flex;
+            justify-content: space-between; /* آیتم‌ها را در طرفین و وسط قرار می‌دهد */
+            align-items: center; /* آیتم‌ها را به صورت عمودی در مرکز قرار می‌دهد */
+            width: 100%;
+            max-width: 1200px; /* برای صفحات بزرگ، عرض هدر محدود می‌شود */
+            margin: 0 auto; /* هدر را در مرکز صفحه قرار می‌دهد */
+            padding: 15px 0; /* کمی فاصله داخلی از بالا و پایین */
+        }
 
-    /* لایه تیره برای کنتراست بهتر شیشه */
-    body::before{
-      content:"";
-      position:fixed; inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.55));
-      pointer-events:none;
-      z-index:0;
-    }
+        /* --- استایل لوگو (نوشته SKY) --- */
+        .logo {
+            font-family: 'Poppins', sans-serif; /* استفاده از فونت Poppins */
+            font-size: 3rem; /* اندازه فونت */
+            font-weight: 700; /* ضخامت فونت */
+            color: white;
+            text-decoration: none; /* برداشتن زیرخط لینک */
+            letter-spacing: 3px; /* فاصله بین حروف */
+        }
 
-    .container{
-      position: relative;
-      z-index:1;
-      width:min(92vw, 420px);
-      padding:32px 22px 26px;
-      text-align:center;
-      border-radius:24px;
+        /* --- استایل دایره‌های پروفایل و لاگین --- */
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.2); /* سفید نیمه‌شفاف */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%; /* تبدیل مربع به دایره */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* انیمیشن نرم برای هاور */
+        }
+        
+        .icon-circle:hover {
+            background-color: rgba(255, 255, 255, 0.4); /* در زمان هاور کمی روشن‌تر می‌شود */
+        }
 
-      /* هسته‌ی شیشه */
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(22px) saturate(180%);
-      -webkit-backdrop-filter: blur(22px) saturate(180%);
-      box-shadow:
-        0 10px 35px var(--glass-shadow),
-        inset 0 1px 0 rgba(255,255,255,0.15),
-        inset 0 -1px 0 rgba(255,255,255,0.06);
-      overflow:hidden;
-    }
+        .icon-circle svg {
+            width: 24px;
+            height: 24px;
+            stroke: white; /* رنگ آیکون */
+            stroke-width: 2;
+        }
 
-    /* هایلایت مایع که با موس/تاچ حرکت می‌کند */
-    .container::before{
-      content:"";
-      position:absolute; inset:-40%;
-      background:
-        radial-gradient(300px 300px at var(--x) var(--y), var(--light), transparent 60%),
-        radial-gradient(240px 240px at calc(var(--x) + 8%) calc(var(--y) + 6%), rgba(255,255,255,0.12), transparent 60%);
-      mix-blend-mode: screen;
-      pointer-events:none;
-      animation: breathe 7s ease-in-out infinite alternate;
-    }
-
-    /* نوار شیِن مورب برای حس شیشه براق */
-    .container::after{
-      content:"";
-      position:absolute; inset:-20%;
-      transform: rotate(18deg);
-      background:
-        linear-gradient(90deg, transparent 35%, var(--sheen) 50%, transparent 65%);
-      filter: blur(18px);
-      opacity: 0.6;
-      animation: sweep 9s linear infinite;
-      pointer-events:none;
-    }
-
-    @keyframes sweep{
-      0% { transform: translateX(-20%) rotate(18deg); }
-      100%{ transform: translateX(20%) rotate(18deg); }
-    }
-    @keyframes breathe{
-      0% { filter: blur(0px); opacity: 0.85; }
-      100%{ filter: blur(2px); opacity: 1; }
-    }
-
-    .logo{
-      margin: 0 auto 18px;
-      width: 118px; height: 118px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.85);
-      display:flex; align-items:center; justify-content:center;
-      box-shadow:
-        0 6px 24px rgba(0,0,0,0.25),
-        inset 0 2px 8px rgba(0,0,0,0.08);
-      position: relative;
-      overflow: hidden;
-    }
-    /* حلقه‌ی درخشان دور لوگو */
-    .logo::after{
-      content:"";
-      position:absolute; inset:-2px;
-      border-radius:50%;
-      background:
-        conic-gradient(from 0deg, rgba(255,255,255,0.0) 0deg, rgba(255,255,255,0.7) 120deg, rgba(255,255,255,0.0) 300deg);
-      mix-blend-mode: overlay;
-      animation: ring 6s linear infinite;
-      pointer-events:none;
-    }
-    @keyframes ring{ to { transform: rotate(360deg); } }
-
-    .logo img{ width:100%; height:100%; object-fit:cover; display:block; }
-
-    h1{
-      font-size: 19px; line-height:1.8; margin: 6px 0 14px; font-weight:700;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.35);
-    }
-
-    .buttons{
-      display:grid; grid-template-columns: repeat(2,1fr);
-      gap:14px; margin-top:16px;
-    }
-
-    .btn{
-      position: relative;
-      display:flex; align-items:center; justify-content:center; gap:8px;
-      padding:12px 10px;
-      border-radius:16px;
-      color:#fff; text-decoration:none; font-weight:600;
-
-      background: linear-gradient(
-        180deg,
-        rgba(255,255,255,0.22),
-        rgba(255,255,255,0.10)
-      );
-      border:1px solid rgba(255,255,255,0.28);
-      backdrop-filter: blur(10px) saturate(150%);
-      -webkit-backdrop-filter: blur(10px) saturate(150%);
-      box-shadow:
-        0 6px 20px rgba(0,0,0,0.25),
-        inset 0 1px 0 rgba(255,255,255,0.22);
-      transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
-      overflow:hidden;
-    }
-
-    /* شیِن کوچک روی دکمه */
-    .btn::after{
-      content:"";
-      position:absolute; inset:-30%;
-      transform: rotate(20deg);
-      background: linear-gradient(90deg, transparent 40%, rgba(255,255,255,0.25) 50%, transparent 60%);
-      filter: blur(10px);
-      opacity:.7;
-      transition: opacity .25s ease;
-    }
-
-    .btn:hover{
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 10px 26px rgba(0,0,0,0.35);
-      background: linear-gradient(180deg, rgba(255,255,255,0.30), rgba(255,255,255,0.12));
-    }
-    .btn:active{ transform: translateY(0px) scale(0.99); }
-
-    .btn img{ width:26px; height:26px; }
-
-    footer{
-      margin-top:22px; font-size:13px; opacity:.9;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.35);
-    }
-
-    /* کوچک‌سازی در موبایل‌های خیلی کوچک */
-    @media (max-width:360px){
-      .logo{ width:100px; height:100px; }
-      h1{ font-size:17px; }
-      .btn{ padding:10px 8px; border-radius:14px; }
-    }
-  </style>
+    </style>
 </head>
 <body>
-  <div class="container" id="glass">
-    <div class="logo">
-      <img src="logo-1.png" alt="لوگو">
-    </div>
 
-    <h1>هیئت نجات غریق و غواصی استان سیستان و بلوچستان ۱۴۰۴</h1>
+    <header class="main-header">
+        <!-- آیتم سمت راست: پروفایل -->
+        <a href="/profile.html" class="icon-circle" title="پروفایل کاربری">
+            <!-- آیکون پروفایل -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+            </svg>              
+        </a>
 
-    <div class="buttons">
-      <a href="https://eitaa.com/OMLzYlujO6BlYzdk" class="btn" target="_blank">
-        <img src="https://myket.ir/app-icon/cda7c5d9-c8f4-46cc-90ad-8207ce835b51.png" alt="ایتا"> ایتا
-      </a>
-      <a href="https://chat.whatsapp.com/H38QaVicoPNII2MNdpJav9" class="btn" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="واتساپ"> واتساپ
-      </a>
-      <a href="https://t.me/+OMLzYlujO6BlYzdk" class="btn" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="تلگرام"> تلگرام
-      </a>
-      <a href="https://portal.lifesaving.ir" class="btn" target="_blank">
-        <img src="https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png" alt="وبسایت"> وبسایت
-      </a>
-    </div>
+        <!-- آیتم وسط: لوگو -->
+        <a href="/" class="logo">SKY</a>
 
-    <footer>طراحی شده توسط مهندس طاها سرگزی</footer>
-  </div>
+        <!-- آیتم سمت چپ: لاگین -->
+        <a href="/login.html" class="icon-circle" title="ورود / ثبت‌نام">
+            <!-- آیکون ورود (کلید) -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
+            </svg>              
+        </a>
+    </header>
 
-  <script>
-    // هایلایت مایع را به موقعیت لمس/موس وابسته می‌کند
-    const glass = document.getElementById('glass');
-    const setLight = (x, y) => {
-      const rect = glass.getBoundingClientRect();
-      const px = ((x - rect.left) / rect.width) * 100;
-      const py = ((y - rect.top) / rect.height) * 100;
-      glass.style.setProperty('--x', px + '%');
-      glass.style.setProperty('--y', py + '%');
-    };
-
-    // موس
-    glass.addEventListener('mousemove', (e) => setLight(e.clientX, e.clientY));
-    // تاچ
-    glass.addEventListener('touchmove', (e) => {
-      if(!e.touches || !e.touches[0]) return;
-      setLight(e.touches[0].clientX, e.touches[0].clientY);
-    }, {passive:true});
-  </script>
 </body>
+
 </html>
