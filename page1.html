@@ -1,53 +1,114 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa">
 <head>
-    <style>
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #f0f0f0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>مربع با گوشه تو رفته و مربع جدا</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #0c0a1a; /* رنگ پس‌زمینه کلی (شبیه تصویر) */
+      font-family: Arial, sans-serif;
+    }
 
-        .main-square {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            background-color: #3498db;
-            border-radius: 15px;
-        }
+    /* کانتینر اصلی برای نگه داشتن هر دو مربع */
+    .container {
+      position: relative; /* برای موقعیت‌دهی absolute مربع کوچک */
+      width: 250px; /* عرض مربع بزرگ */
+      height: 250px; /* ارتفاع مربع بزرگ */
+      background-color: transparent; /* کانتینر خودش رنگی ندارد */
+    }
 
-        /* ایجاد حذف گوشه پایین-چپ */
-        .main-square::before {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background-color: #f0f0f0; /* همان رنگ پس‌زمینه */
-            bottom: 0;
-            left: 0;
-            border-top-right-radius: 15px;
-        }
+    /* مربع بزرگ با گوشه‌های گرد و بریدگی در پایین چپ */
+    .main-box {
+      width: 100%; /* عرض کامل کانتینر */
+      height: 100%; /* ارتفاع کامل کانتینر */
+      background-color: #1a1a1a; /* رنگ مشکی برای مربع بزرگ (شبیه تصویر) */
+      position: absolute;
+      top: 0;
+      left: 0;
+      
+      /* تعریف شکل با استفاده از clip-path برای بریدگی و گوشه‌های گرد */
+      /* این مسیر (path) تمام شکل را شامل گوشه‌های گرد و بریدگی پایین چپ تعریف می‌کند */
+      clip-path: path('
+        M 20 0              /* شروع از بالا چپ (بعد از شعاع گوشه) */
+        H 230               /* خط بالا به راست */
+        A 20 20 0 0 1 250 20 /* گوشه بالا راست گرد */
+        V 230               /* خط راست به پایین */
+        A 20 20 0 0 1 230 250 /* گوشه پایین راست گرد */
+        H 80                /* خط پایین به چپ (قبل از شروع بریدگی) */
+        A 10 10 0 0 0 70 240 /* اولین منحنی داخلی بریدگی (پایین راست بریدگی) */
+        V 190               /* خط داخلی بریدگی به بالا */
+        A 10 10 0 0 0 60 180 /* دومین منحنی داخلی بریدگی (بالا چپ بریدگی) */
+        H 20                /* خط داخلی بریدگی به چپ (تا لبه اصلی) */
+        V 20                /* خط چپ اصلی به بالا */
+        A 20 20 0 0 1 0 20  /* گوشه بالا چپ گرد */
+        Z                   /* بستن مسیر */
+      ');
+      /*
+        توضیحات پارامترها در clip-path:
+        - M x y: شروع مسیر در مختصات (x, y)
+        - H x: خط افقی تا مختصات x
+        - V y: خط عمودی تا مختصات y
+        - A rx ry angle large-arc-flag sweep-flag x y: کمان بیضوی (برای گوشه‌های گرد)
+          - large-arc-flag: 0 (کمان کوچک), 1 (کمان بزرگ)
+          - sweep-flag: 0 (خلاف عقربه‌های ساعت), 1 (در جهت عقربه‌های ساعت)
+          (برای منحنی‌های داخلی بریدگی، sweep-flag 0 استفاده شده تا به داخل منحنی شود)
+        - Z: بستن مسیر
+      */
+    }
 
-        /* مربع جداگانه در گوشه حذف شده */
-        .separate-square {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            background-color: #e74c3c;
-            border-radius: 10px;
-            bottom: 5px;
-            left: 5px;
-            z-index: 2;
-        }
-    </style>
+    /* مربع کوچک جداگانه */
+    .small-box {
+      position: absolute; /* برای موقعیت‌دهی دقیق درون کانتینر */
+      width: 50px;
+      height: 50px;
+      background-color: #fff; /* رنگ سفید برای مربع کوچک (شبیه تصویر) */
+      border-radius: 10px; /* گوشه‌های گرد برای مربع کوچک */
+      
+      /* موقعیت‌دهی در داخل بریدگی */
+      left: 10px; /* 10 پیکسل از سمت چپ کانتینر */
+      bottom: 10px; /* 10 پیکسل از پایین کانتینر */
+
+      /* برای افزودن آیکون (اختیاری) */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      color: #333; /* رنگ آیکون */
+    }
+
+    /* اگر می‌خواهید عکسی داخل مربع بزرگ قرار دهید (اختیاری) */
+    .main-box-content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://via.placeholder.com/250x250/007bff/ffffff?text=Your+Image'); /* یک عکس نمونه */
+      background-size: cover;
+      background-position: center;
+      /* clip-path باید روی این div هم اعمال شود تا عکس هم بریده شود */
+      clip-path: inherit; /* این باعث می‌شود که clip-path از parent خودش (main-box) ارث‌بری کند */
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="main-square">
-            <div class="separate-square"></div>
-        </div>
+
+  <div class="container">
+    <div class="main-box">
+      <!-- می‌توانید محتوای خود (مثل عکس) را اینجا قرار دهید تا با clip-path بریده شود -->
+      <!-- <div class="main-box-content"></div> -->
     </div>
+    <div class="small-box">
+      <!-- می‌توانید یک آیکون SVG یا یک کاراکتر اینجا قرار دهید -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up-right"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+    </div>
+  </div>
+
 </body>
+
 </html>
