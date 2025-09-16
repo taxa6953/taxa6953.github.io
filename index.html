@@ -107,10 +107,14 @@
 
     .product-card {
       position: relative;
+      width: 100%;
+      max-width: 350px; /* کارت استاندارد */
+      aspect-ratio: 1/1; /* مربع */
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin: 0 auto;
     }
     .product-card:hover {
       transform: translateY(-6px);
@@ -120,7 +124,7 @@
     .product-image-wrapper {
       display: block;
       width: 100%;
-      aspect-ratio: 1 / 1; /* مربع شبیه عکس نمونه */
+      height: 100%;
     }
     .product-image-wrapper img {
       width: 100%;
@@ -188,24 +192,36 @@
       </div>
 
       <div class="product-card">
-        <a href="/another-product.html" class="product-image-wrapper">
+        <a href="/product2.html" class="product-image-wrapper">
           <img src="https://i.imgur.com/4qJdY5K.jpeg" alt="آیتم ویژه 2">
         </a>
-        <a href="/another-quick-buy.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
+        <a href="/quick-buy2.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/>
           </svg>
         </a>
-              <a href="/another-quick-buy.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
+      </div>
+
+      <div class="product-card">
+        <a href="/product3.html" class="product-image-wrapper">
+          <img src="https://i.imgur.com/3YHnJ8q.jpeg" alt="آیتم ویژه 3">
+        </a>
+        <a href="/quick-buy3.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/>
           </svg>
-              </a>
-              <a href="/another-quick-buy.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
+        </a>
+      </div>
+
+      <div class="product-card">
+        <a href="/product4.html" class="product-image-wrapper">
+          <img src="https://i.imgur.com/WlP2MGu.jpeg" alt="آیتم ویژه 4">
+        </a>
+        <a href="/quick-buy4.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/>
           </svg>
-              </a>
+        </a>
       </div>
     </main>
   </div>
