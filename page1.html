@@ -3,102 +3,93 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>مربع بزرگ با گوشه حذف‌شده</title>
+<title>مربع با گوشه حذف‌شده (شفاف)</title>
 <style>
   :root{
-    --page-bg: #f0f0f0;           /* رنگ پس‌زمینه صفحه (اگر تغییر دادید این رنگ را هم به‌روزرسانی کنید) */
-    --main-color: #3498db;       /* رنگ مربع اصلی */
-    --size: min(78vmin, 760px);  /* اندازه مربع اصلی (ریسپانسیو) */
-    --radius: clamp(14px, calc(var(--size) * 0.04), 36px);    /* گردی گوشه‌ها */
-    --cut-size: calc(var(--size) * 0.18);   /* اندازه گوشه حذف‌شده */
-    --cut-radius: clamp(12px, calc(var(--cut-size) * 0.45), 40px); /* گردی گوشه‌ی داخلی حذف‌شده */
-    --small-size: calc(var(--cut-size) * 0.78);  /* اندازه مربع جدا */
+    --page-bg-color: #0f1724;   /* بک‌گراند صفحه (در صورت نیاز تغییر بده) */
+    --main-color: #0b66c3;      /* رنگ مربع بزرگ */
+    --size: min(78vmin, 900px); /* اندازهٔ مربع اصلی (ریسپانسیو) */
+    --outer-radius: clamp(18px, calc(var(--size) * 0.03), 56px);
+    --cut-ratio: 0.18; /* نسبت گوشه حذف‌شده به ابعاد مربع (18%) */
+    --cut-size: calc(var(--size) * var(--cut-ratio));
+    --small-ratio: 0.78; /* اندازه مربع سفید نسبت به cut */
+    --small-size: calc(var(--cut-size) * var(--small-ratio));
   }
 
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--page-bg);
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  }
-
-  .container {
-    padding: 20px;
+  /* صفحه */
+  body{
+    margin:0;
+    min-height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
+    background: var(--page-bg-color); /* اگر بک‌گراند تصویری یا گرادینت داری بذار همونجا */
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   }
 
-  .main-square {
-    position: relative;
-    width: var(--size);
-    height: var(--size);
-    background: var(--main-color);
-    border-radius: var(--radius);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-    overflow: visible; /* مربع جدا ممکن است بیرون از آن قرار بگیرد */
+  .container{ padding:24px; }
+
+  /* کارت / مربع اصلی */
+  .card{
+    position:relative;
+    width:var(--size);
+    height:var(--size);
+    border-radius:var(--outer-radius);
+    overflow:visible; /* اجازه می‌ده مربع کوچک بیرون بیاد اگر خواستی */
   }
 
-  /* این عنصر ظاهراً گوشه پایین-چپ را "حذف" می‌کند (با رنگ پس‌زمینه صفحه پوشیده می‌شود) */
-  .main-square::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: var(--cut-size);
-    height: var(--cut-size);
-    background: var(--page-bg);            /* باید هم‌رنگ پس‌زمینه صفحه باشد */
-    border-top-right-radius: var(--cut-radius);
-    z-index: 1;
-  }
+  /* SVG که شکل آبی را می‌کشد و با mask گوشه را شفاف می‌کند */
+  .card svg{ position:absolute; inset:0; width:100%; height:100%; display:block; pointer-events:none; }
+  .card svg .bgRect { fill: var(--main-color); } /* رنگ مربع بزرگ */
 
-  /* مربع جدا (در داخل ناحیه حذف شده، ولی جدا از مربع اصلی) */
-  .separate-square {
-    position: absolute;
-    width: var(--small-size);
-    height: var(--small-size);
-    left: calc((var(--cut-size) - var(--small-size)) / 2);
+  /* مربع سفید کوچک */
+  .small{
+    position:absolute;
+    width:var(--small-size);
+    height:var(--small-size);
+    left: calc((var(--cut-size) - var(--small-size)) / 2);   /* وسط داخل حفره */
     bottom: calc((var(--cut-size) - var(--small-size)) / 2);
-    background: #ffffff;
+    background:#ffffff;
     border-radius: calc(var(--small-size) * 0.22);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.28);
+    z-index:2;
   }
 
-  /* اگر می‌خواهید مربع جدا بیرون از قاب و روی پس‌زمینه قرار بگیرد (مثل بعضی نمونه‌ها)، کافیست کلاس `outside` را اضافه کنید: */
-  .separate-square.outside {
-    left: calc(var(--cut-size) * -0.18);   /* منفی می‌شود تا بیرون قاب بیاید */
-    bottom: calc(var(--cut-size) * -0.18);
-    transform: translate(0, 0);
-    /* سایه رنگ شدیدتر برای برجسته شدن روی پس‌زمینه */
-    box-shadow: 0 14px 30px rgba(0,0,0,0.30);
+  /* اگر خواستی مربع سفید بیرون قاب (همانند بعضی تصاویر) */
+  .small.outside{
+    left: calc(-1 * var(--small-size) * 0.16);
+    bottom: calc(-1 * var(--small-size) * 0.16);
   }
 
-  /* کوچک‌تر کردن اندازه در موبایل اگر لازم باشد */
+  /* اگر قبلاً از ::before استفاده کرده‌ایم، آن را غیرفعال کن */
+  .main-square::before,
+  .card::before { display:none !important; }
+
   @media (max-width:420px){
     :root { --size: min(90vmin, 420px); }
   }
-
 </style>
 </head>
 <body>
   <div class="container">
-    <div class="main-square">
-      <!--
-        اگر می‌خواهید مربع جدا داخل حفره باشد از کد زیر استفاده کنید:
-        <div class="separate-square"></div>
+    <div class="card">
+      <!-- SVG: با یک mask، یک rect آبی رسم می‌کنیم و در mask یک rect سیاه (ناشفاف) برای حذف گوشه می‌گذاریم -->
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden>
+        <defs>
+          <mask id="cutMask">
+            <!-- ناحیه سفید = نمایش داده می‌شود -->
+            <rect x="0" y="0" width="100%" height="100%" rx="10%" ry="10%" fill="white"/>
+            <!-- ناحیه سیاه = شفاف می‌شود (حذف) — اینجا گوشهٔ پایین-چپ -->
+            <rect x="0" y="82%" width="18%" height="18%" rx="5%" ry="5%" fill="black"/>
+          </mask>
+        </defs>
 
-        اگر می‌خواهید مربع جدا بیرون از قاب (مثل تصویر نمونه) باشد:
-        <div class="separate-square outside"></div>
-      -->
-      <div class="separate-square"></div>
+        <!-- مستطیل اصلی که ماسک روی آن اعمال می‌شود -->
+        <rect class="bgRect" x="0" y="0" width="100%" height="100%" mask="url(#cutMask)"></rect>
+      </svg>
+
+      <!-- مربع سفید کوچک؛ اگر خواستی بیرون بگذار کلاس outside -->
+      <div class="small"></div>
     </div>
   </div>
 </body>
