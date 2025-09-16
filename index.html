@@ -156,20 +156,29 @@
         }
 
         /* استایل برای دکمه اکشن کوچک (همان مربع کوچک چپ پایین) */
-        .action-button {
-      
+ /* استایل برای دکمه اکشن کوچک */
+.action-button {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 8px;
+    transition: all 0.3s ease;
+    z-index: 2; /* بالاتر از عکس قرار بگیره */
+}
 
-        .action-button:hover {
-            background-color: #e0e0e0;
-            transform: scale(1.05);
-        }
+.action-button:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+}
 
-        .action-button svg {
-            width: 28px;
-            height: 28px;
-            color: black; /* رنگ آیکون */
-            transform: rotate(-45deg); /* چرخاندن فلش برای جهت‌دهی */
-        }
+.action-button svg {
+    width: 28px;
+    height: 28px;
+    color: black;
+    transform: rotate(-45deg);
+}
     </style>
 </head>
 <body>
