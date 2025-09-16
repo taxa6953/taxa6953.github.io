@@ -129,14 +129,12 @@
         }
 
         /* استایل برای هر کارت محصول تکی */
-        .product-card {
-            position: relative; /* برای موقعیت‌دهی دکمه اکشن به صورت absolute */
-            background-color: #1a1a1a; /* رنگ پس‌زمینه کارت (تیره) */
-            border-radius: 20px; /* گرد کردن لبه‌های کارت */
-            overflow: hidden; /* تضمین می‌کند که عکس داخل کارت هم گرد می‌شود */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+      .product-card {
+  position: relative;   /* برای موقعیت‌دهی دکمه */
+  border-radius: 20px;  /* گوشه‌های گرد */
+  overflow: hidden;     /* تا کودک‌ها خارج از محدوده گرد دیده نشوند */
+  z-index: 1;           /* زیر دکمه قرار گیرد */
+      }
         .product-card:hover {
             transform: translateY(-5px); /* حرکت به سمت بالا در زمان هاور */
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
@@ -159,20 +157,7 @@
 
         /* استایل برای دکمه اکشن کوچک (همان مربع کوچک چپ پایین) */
         .action-button {
-            position: absolute;
-            bottom: 20px; /* فاصله از پایین کارت */
-            left: 20px; /* فاصله از چپ کارت */
-            width: 60px;
-            height: 60px;
-            background-color: white; /* رنگ پس‌زمینه دکمه سفید */
-            border-radius: 12px; /* گرد کردن لبه‌های دکمه */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
+      
 
         .action-button:hover {
             background-color: #e0e0e0;
