@@ -81,6 +81,64 @@ body {
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 4px;
 }
+
+/* --- بخش محصولات با کارت گوشه حذف‌شده --- */
+:root{
+  --product-size: min(78vmin, 300px);
+  --cut-ratio: 0.18;
+  --cut-size: calc(var(--product-size) * var(--cut-ratio));
+  --small-ratio: 0.78;
+  --small-size: calc(var(--cut-size) * var(--small-ratio));
+}
+
+.product-area {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+/* کارت اصلی */
+.product-card {
+  position: relative;
+  width: var(--product-size);
+  height: var(--product-size);
+  overflow: visible;
+}
+
+/* SVG برای گوشه حذف‌شده */
+.product-card svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+/* مربع سفید کوچک داخل حفره */
+.product-card .small {
+  position: absolute;
+  width: var(--small-size);
+  height: var(--small-size);
+  left: calc((var(--cut-size) - var(--small-size)) / 2);
+  bottom: calc((var(--cut-size) - var(--small-size)) / 2);
+  background: #fff;
+  border-radius: calc(var(--small-size) * 0.18);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.28);
+  z-index: 2;
+}
+
+/* اگر بخواهیم مربع بیرون از کارت باشد */
+.product-card .small.outside {
+  left: calc(-1 * var(--small-size) * 0.16);
+  bottom: calc(-1 * var(--small-size) * 0.16);
+}
+
+@media (max-width:420px){
+  :root { --product-size: min(90vmin, 300px); }
+}
 </style>
 </head>
 <body>
@@ -102,9 +160,24 @@ body {
 
   <div class="header-divider"></div>
 
-  <!-- بخش اصلی -->
-  <main>
-    <!-- محتوا اینجا قرار می‌گیرد -->
+  <!-- بخش محصولات -->
+  <main class="product-area">
+
+    <!-- نمونه کارت -->
+    <div class="product-card">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden>
+        <defs>
+          <mask id="cutMask" maskUnits="objectBoundingBox">
+            <rect x="0" y="0" width="100%" height="100%" rx="10%" ry="10%" fill="white"/>
+            <rect x="0" y="82%" width="18%" height="18%" rx="5%" ry="5%" fill="black"/>
+          </mask>
+        </defs>
+        <image href="Samsung-Galaxy-Z-Flip-6-Wallpaper-4.jpg" x="0" y="0" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" mask="url(#cutMask)"></image>
+      </svg>
+
+      <div class="small"></div>
+    </div>
+
   </main>
 </div>
 </body>
