@@ -1,252 +1,203 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فروشگاه SKY</title>
-    
-    <!-- Import Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فروشگاه SKY</title>
 
+  <!-- فونت‌ها -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <style>
-        /* --- استایل‌های کلی و ریست --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Vazirmatn', sans-serif; /* فونت وزیرمتن برای کل بدنه */
-            /* رنگ زمینه نارنجی مدرن با گرادینت */
-            background: linear-gradient(135deg, #FF9500, #FF5F6D);
-            min-height: 100vh; /* برای اینکه زمینه کل صفحه را بگیرد */
-            padding: 0; /* padding از body حذف شده و به .container منتقل می‌شود */
-            display: flex; /* برای مرکز قرار دادن container در صفحات بزرگ */
-            justify-content: center; /* مرکز افقی */
-        }
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: linear-gradient(135deg, #FF9500, #FF5F6D);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
 
-        /* --- کانتینر اصلی محتوا برای محدود کردن عرض --- */
-        .container {
-            width: 100%;
-            max-width: 1200px; /* حداکثر عرض محتوا */
-            margin: 0 auto; /* مرکز قرار دادن container در صفحات بزرگتر از max-width */
-            padding: 20px; /* فاصله داخلی از لبه‌های صفحه */
-            display: flex;
-            flex-direction: column; /* چیدمان ستونی محتویات داخل container */
-        }
-        
-        /* --- استایل هدر اصلی --- */
-        .main-header {
-            display: flex;
-            justify-content: space-between; /* آیتم‌ها را در طرفین و وسط قرار می‌دهد */
-            align-items: center; /* آیتم‌ها را به صورت عمودی در مرکز قرار می‌دهد */
-            padding: 15px 0; /* کمی فاصله داخلی از بالا و پایین هدر */
-        }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
 
-        /* --- استایل لوگو (نوشته SKY) --- */
-        .logo {
-            font-family: 'Poppins', sans-serif; /* استفاده از فونت Poppins */
-            font-size: 3rem; /* اندازه فونت */
-            font-weight: 700; /* ضخامت فونت */
-            color: white;
-            text-decoration: none; /* برداشتن زیرخط لینک */
-            letter-spacing: 3px; /* فاصله بین حروف */
-        }
+    /* --- هدر --- */
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
 
-        /* --- استایل دایره‌های پروفایل و لاگین --- */
-        .icon-circle {
-            width: 50px;
-            height: 50px;
-            background-color: rgba(255, 255, 255, 0.2); /* سفید نیمه‌شفاف */
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%; /* تبدیل مربع به دایره */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: background-color 0.3s ease; /* انیمیشن نرم برای هاور */
-        }
-        
-        .icon-circle:hover {
-            background-color: rgba(255, 255, 255, 0.4); /* در زمان هاور کمی روشن‌تر می‌شود */
-        }
+    .logo {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      letter-spacing: 3px;
+    }
 
-        .icon-circle svg {
-            width: 24px;
-            height: 24px;
-            stroke: white; /* رنگ آیکون */
-            stroke-width: 2;
-        }
-                /* --- استایل خط جداکننده (Divider) --- */
-        .header-divider {
-            width: 100%; /* عرض خط به اندازه عرض والد خود باشد (container) */
-            margin-top: 10px; /* فاصله خط از هدر (قابل تنظیم) */
-            height: 6px; /* ضخامت خط */
-            background-color: rgba(255, 255, 255, 0.3); /* رنگ سفید با شفافیت */
-            border-radius: 4px; /* <<<< این خط برای گرد کردن لبه‌ها اضافه شده است (قبلا هم بود، اما ممکن است کافی نباشد) */
-            /* برای گردتر کردن لبه ها، می توانید مقدار 2px را به 5px یا بیشتر تغییر دهید. */
-        }
+    .icon-circle {
+      width: 50px;
+      height: 50px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .icon-circle:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+    .icon-circle svg {
+      width: 24px;
+      height: 24px;
+      stroke: white;
+      stroke-width: 2;
+    }
 
-        /* --- استایل‌های جدید برای بخش نمایش محصولات --- */
+    .header-divider {
+      width: 100%;
+      margin-top: 10px;
+      height: 6px;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 4px;
+    }
 
-        /* کانتینر اصلی برای کارت‌های محصولات که قابلیت اسکرول دارد */
-        .product-showcase-area {
-            margin-top: 30px; /* فاصله از خط جداکننده */
-            display: flex;
-            flex-direction: column; /* چیدمان عمودی کارت‌ها */
-            gap: 30px; /* فاصله بین هر کارت محصول */
-            width: 100%; /* عرض کامل container را می‌گیرد */
-            
-            /* برای قابلیت اسکرول عمودی */
-            /* ارتفاع حداکثری برای ناحیه اسکرول. مقدار 140px یک تخمین است و ممکن است نیاز به تنظیم داشته باشد. */
-            /* این مقدار باید مجموع ارتفاع هدر، مارجین‌های آن، خط جداکننده و paddingهای اطراف باشد */
-            max-height: calc(100vh - 180px); /* 100vh منهای ارتفاع ثابت هدر و مارجین‌ها */
-            overflow-y: auto; /* اسکرول عمودی را فعال می‌کند */
-            padding-bottom: 20px; /* کمی فضای خالی در پایین ناحیه اسکرول */
+    /* --- بخش محصولات --- */
+    .product-showcase-area {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      width: 100%;
+      max-height: calc(100vh - 140px); /* کارت‌ها از زیر هدر رد میشن */
+      overflow-y: auto;
+      padding-bottom: 20px;
 
-            /* استایل اسکرول‌بار (اختیاری و برای مرورگرهای مدرن) */
-            scrollbar-width: thin; /* برای فایرفاکس */
-            scrollbar-color: rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.1); /* برای فایرفاکس */
-        }
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+    }
 
-        /* استایل برای اسکرول‌بار در مرورگرهای مبتنی بر وب‌کیت (کروم، سافاری) */
-        .product-showcase-area::-webkit-scrollbar {
-            width: 8px; /* عرض اسکرول‌بار */
-        }
-        .product-showcase-area::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1); /* رنگ زمینه اسکرول‌بار */
-            border-radius: 10px;
-        }
-        .product-showcase-area::-webkit-scrollbar-thumb {
-            background-color: rgba(255, 255, 255, 0.5); /* رنگ "دسته" اسکرول‌بار */
-            border-radius: 10px;
-            border: 2px solid rgba(255, 255, 255, 0.1); /* حاشیه دور دسته */
-        }
+    .product-showcase-area::-webkit-scrollbar {
+      width: 8px;
+    }
+    .product-showcase-area::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 8px;
+    }
 
-        /* استایل برای هر کارت محصول تکی */
-      .product-card {
-  position: relative;   /* برای موقعیت‌دهی دکمه */
-  border-radius: 20px;  /* گوشه‌های گرد */
-  overflow: hidden;     /* تا کودک‌ها خارج از محدوده گرد دیده نشوند */
-  z-index: 1;           /* زیر دکمه قرار گیرد */
-      }
-        .product-card:hover {
-            transform: translateY(-5px); /* حرکت به سمت بالا در زمان هاور */
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-        }
+    .product-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    }
 
-        /* استایل برای نگهدارنده عکس محصول بزرگ */
-        .product-image-wrapper {
-            display: block; /* برای اینکه لینک تمام فضای والد را بگیرد */
-            width: 100%;
-            aspect-ratio: 4 / 3; /* نسبت ابعاد عکس (عرض به ارتفاع). برای حفظ تناسب بصری */
-        }
+    .product-image-wrapper {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1; /* مربع شبیه عکس نمونه */
+    }
+    .product-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-        .product-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* عکس را طوری برش می‌دهد که تمام فضای موجود را پر کند بدون تغییر نسبت */
-            display: block;
-            border-radius: 20px; /* گوشه‌های عکس را گرد می‌کند (همپوشانی با والد) */
-        }
-
-        /* استایل برای دکمه اکشن کوچک (همان مربع کوچک چپ پایین) */
- /* استایل برای دکمه اکشن کوچک */
-.action-button {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    background-color: white;
-    border-radius: 12px;
-    padding: 8px;
-    transition: all 0.3s ease;
-    z-index: 2; /* بالاتر از عکس قرار بگیره */
-}
-
-.action-button:hover {
-    background-color: #e0e0e0;
-    transform: scale(1.05);
-}
-
-.action-button svg {
-    width: 28px;
-    height: 28px;
-    color: black;
-    transform: rotate(-45deg);
-}
-    </style>
+    .action-button {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      width: 42px;
+      height: 42px;
+      background: white;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.2s ease, background 0.2s ease;
+      z-index: 2;
+    }
+    .action-button:hover {
+      background: #f0f0f0;
+      transform: scale(1.05);
+    }
+    .action-button svg {
+      width: 22px;
+      height: 22px;
+      color: black;
+      transform: rotate(-45deg);
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <!-- هدر -->
+    <header class="main-header">
+      <a href="/profile.html" class="icon-circle" title="پروفایل کاربری">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
+        </svg>
+      </a>
+      <a href="/" class="logo">SKY</a>
+      <a href="/login.html" class="icon-circle" title="ورود / ثبت‌نام">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z"/>
+        </svg>
+      </a>
+    </header>
 
-    <!-- کانتینر اصلی که تمام محتوا را در خود جای می‌دهد -->
-    <div class="container">
-        <header class="main-header">
-            <!-- آیتم سمت راست: پروفایل -->
-            <a href="/profile.html" class="icon-circle" title="پروفایل کاربری">
-                <!-- آیکون پروفایل -->
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                </svg>              
-            </a>
+    <div class="header-divider"></div>
 
-            <!-- آیتم وسط: لوگو -->
-            <a href="/" class="logo">SKY</a>
+    <!-- محصولات -->
+    <main class="product-showcase-area">
+      <div class="product-card">
+        <a href="/product-details.html" class="product-image-wrapper">
+          <img src="https://i.imgur.com/z26Hdv4.jpeg" alt="آیتم ویژه 1">
+        </a>
+        <a href="/quick-buy.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/>
+          </svg>
+        </a>
+      </div>
 
-            <!-- آیتم سمت چپ: لاگین -->
-            <a href="/login.html" class="icon-circle" title="ورود / ثبت‌نام">
-                <!-- آیکون ورود (کلید) -->
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
-                </svg>              
-            </a>
-        </header>
-
-        <!-- خط جداکننده زیر هدر -->
-        <div class="header-divider"></div>
-
-        <!-- بخش اصلی محتوا برای نمایش محصولات با قابلیت اسکرول -->
-        <main class="product-showcase-area">
-            <!-- نمونه اول کارت محصول -->
-            <div class="product-card">
-                <a href="/product-details.html" class="product-image-wrapper">
-                    <!-- آدرس عکس محصول بزرگ را اینجا قرار دهید -->
-                    <img src="https://i.imgur.com/z26Hdv4.jpeg" alt="آیتم ویژه بازی 1">
-                </a>
-                <a href="/quick-buy.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
-                    <!-- آیکون فلش برای دکمه کوچک -->
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                    </svg>                      
-                </a>
-            </div>
-
-            <!-- نمونه دوم کارت محصول (برای نمایش قابلیت تکرار و اسکرول) -->
-            <div class="product-card">
-                <a href="/another-product.html" class="product-image-wrapper">
-                    <!-- آدرس عکس محصول دوم را اینجا قرار دهید -->
-                    <img src="https://i.imgur.com/4qJdY5K.jpeg" alt="آیتم ویژه بازی 2">
-                </a>
-                <a href="/another-quick-buy.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                    </svg>                      
-                </a>
-            </div>
-
-            <!-- برای تست قابلیت اسکرول، می‌توانید این div.product-card را چند بار کپی و پیست کنید. -->
-            <!-- <div class="product-card"> ... </div> -->
-            <!-- <div class="product-card"> ... </div> -->
-            <!-- ... -->
-
-        </main>
-
-    </div> <!-- پایان کانتینر اصلی -->
-
+      <div class="product-card">
+        <a href="/another-product.html" class="product-image-wrapper">
+          <img src="https://i.imgur.com/4qJdY5K.jpeg" alt="آیتم ویژه 2">
+        </a>
+        <a href="/another-quick-buy.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/>
+          </svg>
+        </a>
+      </div>
+    </main>
+  </div>
 </body>
-
 </html>
