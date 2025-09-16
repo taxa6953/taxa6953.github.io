@@ -3,121 +3,227 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>کارت‌های اسکرولی</title>
+  <title>فروشگاه SKY</title>
+
+  <!-- فونت‌ها -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
+
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Vazirmatn', sans-serif;
-      background: #f0f2f5;
-      margin: 0;
-      padding: 20px;
-    }
-
-    /* کانتینر اسکرولی */
-    .product-scroll {
+      background: linear-gradient(135deg, #FF9500, #FF5F6D);
+      min-height: 100vh;
       display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      padding-bottom: 10px;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
+      justify-content: center;
     }
 
-    /* مخفی کردن اسکرول در مرورگرهای مدرن (اختیاری) */
-    .product-scroll::-webkit-scrollbar {
-      height: 8px;
-    }
-    .product-scroll::-webkit-scrollbar-thumb {
-      background: rgba(0,0,0,0.2);
-      border-radius: 4px;
-    }
-
-    /* کارت */
-    .product-card {
-      flex: 0 0 auto;
-      width: 220px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      scroll-snap-align: start;
-      transition: transform 0.2s ease;
-    }
-
-    .product-card:hover {
-      transform: translateY(-5px);
-    }
-
-    /* تصویر */
-    .product-image-wrapper img {
+    .container {
       width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 12px 12px 0 0;
-      display: block;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* دکمه عمل */
-    .action-button {
+    /* --- هدر --- */
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+
+    .logo {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      letter-spacing: 3px;
+    }
+
+    .icon-circle {
+      width: 50px;
+      height: 50px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 45px;
-      background: #007bff;
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 0 0 12px 12px;
-      transition: background 0.2s ease;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .icon-circle:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+    .icon-circle svg {
+      width: 24px;
+      height: 24px;
+      stroke: white;
+      stroke-width: 2;
     }
 
+    .header-divider {
+      width: 100%;
+      margin-top: 10px;
+      height: 6px;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 4px;
+    }
+
+    /* --- بخش محصولات --- */
+    .product-showcase-area {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      width: 100%;
+      max-height: calc(100vh - 140px); /* کارت‌ها از زیر هدر رد میشن */
+      overflow-y: auto;
+      padding-bottom: 20px;
+
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+    }
+
+    .product-showcase-area::-webkit-scrollbar {
+      width: 8px;
+    }
+    .product-showcase-area::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 8px;
+    }
+
+    .product-card {
+      position: relative;
+      width: 100%;
+      max-width: 350px; /* کارت استاندارد */
+      aspect-ratio: 1/1; /* مربع */
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin: 0 auto;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    }
+
+    .product-image-wrapper {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .product-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .action-button {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      width: 42px;
+      height: 42px;
+      background: white;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.2s ease, background 0.2s ease;
+      z-index: 2;
+    }
     .action-button:hover {
-      background: #0056b3;
+      background: #f0f0f0;
+      transform: scale(1.05);
+    }
+    .action-button svg {
+      width: 22px;
+      height: 22px;
+      color: black;
+      transform: rotate(-45deg);
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <!-- هدر -->
+    <header class="main-header">
+      <a href="/profile.html" class="icon-circle" title="پروفایل کاربری">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
+        </svg>
+      </a>
+      <a href="/" class="logo">SKY</a>
+      <a href="/login.html" class="icon-circle" title="ورود / ثبت‌نام">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z"/>
+        </svg>
+      </a>
+    </header>
 
-  <h2>محصولات ویژه</h2>
-  <div class="product-scroll">
-    <!-- کارت 1 -->
-    <div class="product-card">
-      <a href="/product1.html" class="product-image-wrapper">
-        <img src="https://i.imgur.com/3YHnJ8q.jpeg" alt="محصول 1">
-      </a>
-      <a href="/quick-buy1.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
-        خرید سریع
-      </a>
-    </div>
+    <div class="header-divider"></div>
 
-    <!-- کارت 2 -->
-    <div class="product-card">
-      <a href="page1.html" class="product-image-wrapper">
-        <img src="https://i.imgur.com/2vQtZBb.jpeg" alt="محصول 2">
-      </a>
-      <a href="/quick-buy2.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
-        خرید سریع
-      </a>
-    </div>
+    <!-- محصولات -->
+    <main class="product-showcase-area">
+      <div class="product-card">
+        <a href="/product-details.html" class="product-image-wrapper">
+          <img src="https://i.imgur.com/z26Hdv4.jpeg" alt="آیتم ویژه 1">
+        </a>
+        <a href="/quick-buy.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/>
+          </svg>
+        </a>
+      </div>
 
-    <!-- کارت 3 -->
-    <div class="product-card">
-      <a href="/product3.html" class="product-image-wrapper">
-        <img src="https://i.imgur.com/3YHnJ8q.jpeg" alt="محصول 3">
-      </a>
-      <a href="/quick-buy3.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
-        خرید سریع
-      </a>
-    </div>
+      <div class="product-card">
+        <a href="/product2.html" class="product-image-wrapper">
+          <img src="https://i.imgur.com/4qJdY5K.jpeg" alt="آیتم ویژه 2">
+        </a>
+        <a href="/quick-buy2.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/>
+          </svg>
+        </a>
+      </div>
 
-    <!-- کارت 4 -->
-    <div class="product-card">
-      <a href="/product4.html" class="product-image-wrapper">
-        <img src="https://i.imgur.com/2vQtZBb.jpeg" alt="محصول 4">
-      </a>
-      <a href="/quick-buy4.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
-        خرید سریع
-      </a>
-    </div>
+      <div class="product-card">
+        <a href="/product3.html" class="product-image-wrapper">
+          <img src="https://i.imgur.com/3YHnJ8q.jpeg" alt="آیتم ویژه 3">
+        </a>
+        <a href="/quick-buy3.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="product-card">
+        <a href="/product4.html" class="product-image-wrapper">
+          <img src="https://i.imgur.com/WlP2MGu.jpeg" alt="آیتم ویژه 4">
+        </a>
+        <a href="/quick-buy4.html" class="action-button" title="مشاهده جزئیات / خرید سریع">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/>
+          </svg>
+        </a>
+      </div>
+    </main>
   </div>
-
 </body>
 </html>
