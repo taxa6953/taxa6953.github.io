@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .main-square {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: #3498db;
+            border-radius: 15px;
+        }
+
+        /* ایجاد حذف گوشه پایین-چپ */
+        .main-square::before {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #f0f0f0; /* همان رنگ پس‌زمینه */
+            bottom: 0;
+            left: 0;
+            border-top-right-radius: 15px;
+        }
+
+        /* مربع جداگانه در گوشه حذف شده */
+        .separate-square {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #e74c3c;
+            border-radius: 10px;
+            bottom: 5px;
+            left: 5px;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-square">
+            <div class="separate-square"></div>
+        </div>
+    </div>
+</body>
+</html>
