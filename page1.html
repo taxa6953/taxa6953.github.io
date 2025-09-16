@@ -1,106 +1,100 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>تصویر با گوشهٔ حذف‌شده</title>
-<style>
-  :root{
-    --page-bg: #0f1724;           /* پس‌زمینهٔ صفحه (که در حفره دیده می‌شود) */
-    --size: min(78vmin, 900px);   /* اندازهٔ مربع اصلی */
-    --cut-ratio: 0.18;            /* نسبت اندازهٔ گوشه حذف‌شده */
-    --cut-size: calc(var(--size) * var(--cut-ratio));
-    --small-ratio: 0.78;
-    --small-size: calc(var(--cut-size) * var(--small-ratio));
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>تصویر با گوشهٔ حذف‌شده و ویدیو</title>
+  <style>
+    :root {
+      --page-bg: #0f1724;
+      --size: min(78vmin, 900px);
+      --cut-ratio: 0.18;
+      --cut-size: calc(var(--size) * var(--cut-ratio));
+      --small-ratio: 0.78;
+      --small-size: calc(var(--cut-size) * var(--small-ratio));
+    }
 
-  html,body{ height:100%; margin:0; }
-  body{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background: var(--page-bg); /* اگر بک‌گراند تصویری یا گرادینت داری اینجا بذارش */
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-  }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      height: 100%;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--page-bg);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    }
 
-  .card {
-    position: relative;
-    width: var(--size);
-    height: var(--size);
-    /* دقت: دیگر نباید background-color آبی برای این عنصر باشد */
-    overflow: visible;
-  }
+    .card {
+      position: relative;
+      width: var(--size);
+      height: var(--size);
+      overflow: visible;
+    }
+    .card svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
 
-  /* SVG روی کل کارت قرار می‌گیرد و توسط mask گوشه را حذف می‌کند */
-  .card svg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    pointer-events: none;
-  }
+    .small {
+      position: absolute;
+      width: var(--small-size);
+      height: var(--small-size);
+      left: calc((var(--cut-size) - var(--small-size)) / 2);
+      bottom: calc((var(--cut-size) - var(--small-size)) / 2);
+      border-radius: calc(var(--small-size) * 0.18);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.28);
+      overflow: hidden;
+      z-index: 2;
+    }
 
-  /* مربع سفید کوچک که در حفره قرار می‌گیرد */
-  .small {
-    position: absolute;
-    width: var(--small-size);
-    height: var(--small-size);
-    left: calc((var(--cut-size) - var(--small-size)) / 2);
-    bottom: calc((var(--cut-size) - var(--small-size)) / 2);
-    background: #fff;
-    border-radius: calc(var(--small-size) * 0.18);
-    box-shadow: 0 10px 28px rgba(0,0,0,0.28);
-    z-index: 2; /* بالاتر از تصویر */
-  }
+    .small video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-  /* اگر خواستی مربع سفید بیرون از قاب باشد (مثل نمونه‌های بعضی عکس‌ها) */
-  .small.outside {
-    left: calc(-1 * var(--small-size) * 0.16);
-    bottom: calc(-1 * var(--small-size) * 0.16);
-  }
-
-  @media (max-width:420px){
-    :root { --size: min(90vmin, 420px); }
-  }
-</style>
+    /* موبایل */
+    @media (max-width: 420px) {
+      :root { --size: min(90vmin, 420px); }
+    }
+  </style>
 </head>
 <body>
 
-<div class="card">
-  <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden>
-    <defs>
-      <!--
-        ماسکی که:
-        - ناحیه سفید = نمایش داده می‌شود
-        - ناحیه سیاه = شفاف (حذف) می‌شود
-        اینجا rx/ry به صورت درصد داده شده تا نسبت‌ها در هر اندازه حفظ شوند
-      -->
-      <mask id="cutMask" maskUnits="objectBoundingBox">
-        <!-- مستطیل کلی با گوشه‌های گرد (همان لبه‌های گرد آبی بزرگ) -->
-        <rect x="0" y="0" width="100%" height="100%" rx="10%" ry="10%" fill="white"/>
-        <!-- گوشهٔ حذف شده در پایین-چپ (سیاه => شفاف می‌شود) -->
-        <rect x="0" y="82%" width="18%" height="18%" rx="5%" ry="5%" fill="black"/>
-      </mask>
-    </defs>
+  <div class="card">
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden>
+      <defs>
+        <mask id="cutMask" maskUnits="objectBoundingBox">
+          <rect x="0" y="0" width="100%" height="100%" rx="10%" ry="10%" fill="white"/>
+          <rect x="0" y="82%" width="18%" height="18%" rx="5%" ry="5%" fill="black"/>
+        </mask>
+      </defs>
+      <!-- در صورت نیاز می‌توانید image یا rect هم اینجا بگذارید -->
+      <image
+        href="Samsung-Galaxy-Z-Flip-6-Wallpaper-4.jpg"
+        x="0" y="0" width="100%" height="100%"
+        preserveAspectRatio="xMidYMid slice"
+        mask="url(#cutMask)">
+      </image>
+    </svg>
 
-    <!-- اینجا به جای rect آبی از image استفاده می‌کنیم -->
-    <!-- preserveAspectRatio="xMidYMid slice" مانند background-size:cover عمل می‌کند -->
-    <image
-      href="Samsung-Galaxy-Z-Flip-6-Wallpaper-4.jpg"
-      x="0" y="0" width="100%" height="100%"
-      preserveAspectRatio="xMidYMid slice"
-      mask="url(#cutMask)">
-    </image>
-  </svg>
-
-  <!-- مربع سفید کوچک (داخل یا بیرون حفره بسته به کلاس) -->
-<div class="small">
-  <img src="open.mp4" alt="" />
-</div>
-
-<!-- اگر می‌خواهی مربع سفید بیرون از قاب باشه: -->
-<!-- <div class="small outside"></div> -->
+    <!-- اینجا ویدیو را با تگ video اضافه می‌کنیم -->
+    <div class="small">
+      <video
+        src="open.mp4"
+        autoplay
+        loop
+        muted
+        playsinline
+      ></video>
+    </div>
+  </div>
 
 </body>
 
