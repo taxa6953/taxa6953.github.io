@@ -1,97 +1,69 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>مربع با گوشه حذف‌شده (شفاف)</title>
-<style>
-  :root{
-    --page-bg-color: #00000;   /* بک‌گراند صفحه (در صورت نیاز تغییر بده) */
-    --main-color: #0b66c3;      /* رنگ مربع بزرگ */
-    --size: min(78vmin, 900px); /* اندازهٔ مربع اصلی (ریسپانسیو) */
-    --outer-radius: clamp(18px, calc(var(--size) * 0.03), 56px);
-    --cut-ratio: 0.18; /* نسبت گوشه حذف‌شده به ابعاد مربع (18%) */
-    --cut-size: calc(var(--size) * var(--cut-ratio));
-    --small-ratio: 0.78; /* اندازه مربع سفید نسبت به cut */
-    --small-size: calc(var(--cut-size) * var(--small-ratio));
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه با تصویر جایگزین</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #000000; min-height: 100vh; }
+        .container { display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 2vw; }
 
-  /* صفحه */
-  body{
-    margin:0;
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background: var(--page-bg-color); /* اگر بک‌گراند تصویری یا گرادینت داری بذار همونجا */
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  }
+        /* 🟦 مربع اصلی (بدون تغییر) */
+        .main-square {
+            position: relative;
+            width: min(80vw, 80vh);
+            height: min(80vw, 80vh);
+            background-image: url('https://i.stack.imgur.com/7Z7xY.png'); /* تصویر روبات */
+            background-size: cover;
+            background-position: center;
+            border-radius: 2vw;
+            overflow: visible; /* اجازه نمایش تصویر بیرون از مربع */
+        }
 
-  .container{ padding:24px; }
+        /* 🖼️ تصویر جایگزین به جای قوس آبی */
+        .main-square::after {
+            content: '';
+            position: absolute;
+            bottom: 0; /* مکان: پایین چپ (دقیقاً مانند قوس آبی) */
+            left: 0;
+            width: 22%; /* اندازه نسبی (دقیقاً مانند قوس آبی) */
+            height: 22%;
+            /* 👇 آدرس تصویر شما (PNG شفاف) */
+            background-image: url('آدرس_تصویر_شما.png'); 
+            background-size: cover; /* پوشاندن کل ناحیه برش شده */
+            background-position: center;
+            border-top-right-radius: 3.5vw; /* 如果 تصویر خود قوس ندار، این را حفظ کنید */
+            clip-path: polygon(0 100%, 100% 100%, 100% 0); /* شکل برش دقیق (بدون تغییر) */
+            z-index: 5; /* زیر مربع سفید قرار گیرد (بدون تغییر) */
+        }
 
-  /* کارت / مربع اصلی */
-  .card{
-    position:relative;
-    width:var(--size);
-    height:var(--size);
-    border-radius:var(--outer-radius);
-    overflow:visible; /* اجازه می‌ده مربع کوچک بیرون بیاد اگر خواستی */
-  }
-
-  /* SVG که شکل آبی را می‌کشد و با mask گوشه را شفاف می‌کند */
-  .card svg{ position:absolute; inset:0; width:100%; height:100%; display:block; pointer-events:none; }
-  .card svg .bgRect { fill: var(--main-color); } /* رنگ مربع بزرگ */
-
-  /* مربع سفید کوچک */
-  .small{
-    position:absolute;
-    width:var(--small-size);
-    height:var(--small-size);
-    left: calc((var(--cut-size) - var(--small-size)) / 2);   /* وسط داخل حفره */
-    bottom: calc((var(--cut-size) - var(--small-size)) / 2);
-    background:#ffffff;
-    border-radius: calc(var(--small-size) * 0.22);
-    box-shadow: 0 10px 28px rgba(0,0,0,0.28);
-    z-index:2;
-  }
-
-  /* اگر خواستی مربع سفید بیرون قاب (همانند بعضی تصاویر) */
-  .small.outside{
-    left: calc(-1 * var(--small-size) * 0.16);
-    bottom: calc(-1 * var(--small-size) * 0.16);
-  }
-
-  /* اگر قبلاً از ::before استفاده کرده‌ایم، آن را غیرفعال کن */
-  .main-square::before,
-  .card::before { display:none !important; }
-
-  @media (max-width:420px){
-    :root { --size: min(90vmin, 420px); }
-  }
-</style>
+        /* 🟨 مربع سفید (بدون تغییر) */
+        .separate-square {
+            position: absolute;
+            bottom: 2.5%;
+            left: 2.5%;
+            width: 13%;
+            height: 13%;
+            background-color: #ffffff;
+            border-radius: 1.8vw;
+            border: none;
+            box-shadow: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #3b82f6;
+            font-size: 3.2vw;
+            z-index: 10; /* روی تصویر قرار گیرد */
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="card">
-      <!-- SVG: با یک mask، یک rect آبی رسم می‌کنیم و در mask یک rect سیاه (ناشفاف) برای حذف گوشه می‌گذاریم -->
-      <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden>
-        <defs>
-          <mask id="cutMask">
-            <!-- ناحیه سفید = نمایش داده می‌شود -->
-            <rect x="0" y="0" width="100%" height="100%" rx="10%" ry="10%" fill="white"/>
-            <!-- ناحیه سیاه = شفاف می‌شود (حذف) — اینجا گوشهٔ پایین-چپ -->
-            <rect x="0" y="82%" width="18%" height="18%" rx="5%" ry="5%" fill="black"/>
-          </mask>
-        </defs>
-
-        <!-- مستطیل اصلی که ماسک روی آن اعمال می‌شود -->
-        <rect class="bgRect" x="0" y="0" width="100%" height="100%" mask="url(#cutMask)"></rect>
-      </svg>
-
-      <!-- مربع سفید کوچک؛ اگر خواستی بیرون بگذار کلاس outside -->
-      <div class="small"></div>
+    <div class="container">
+        <div class="main-square">
+            <div class="separate-square">↗️</div>
+        </div>
     </div>
-  </div>
 </body>
 
 </html>
