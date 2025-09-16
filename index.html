@@ -72,8 +72,18 @@
             stroke-width: 2;
         }
 
+        /* --- استایل خط جداکننده (Divider) --- */
+.header-divider {
+    width: 100%;
+    max-width: 1200px; /* برای هماهنگی با عرض هدر */
+    margin: 20px auto 0 auto; /* فاصله از بالا | راست و چپ اتوماتیک برای وسط‌چین شدن | فاصله از پایین */
+    height: 1px; /* ضخامت خط */
+    background-color: rgba(255, 255, 255, 0.3); /* رنگ سفید با شفافیت */
+}
+        
     </style>
 </head>
+    
 <body>
 
     <header class="main-header">
@@ -97,6 +107,9 @@
         </a>
     </header>
 
+    <!-- این خط را اضافه میکند -->
+    <div class="header-divider"></div>
+    
 </body>
 
 </html>
