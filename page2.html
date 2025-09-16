@@ -85,20 +85,21 @@ body {
 }
 
 .products {
-  margin-top:30px;
-  display:flex;
-  gap:20px;
-  overflow-x:auto;
-  padding-bottom:20px;
+  display: flex;
+  flex-direction: column; /* کارت‌ها زیر هم */
+  gap: 30px;              /* فاصله بین کارت‌ها */
+  margin-top: 30px;       /* فاصله از هدر */
+  align-items: center;    /* وسط چین کارت‌ها */
 }
 .products::-webkit-scrollbar { display:none; }
 
 .card {
-  position:relative;
-  flex:0 0 300px; /* عرض کارت */
-  height:400px;    /* ارتفاع کارت */
-  overflow:visible;
-  border-radius:10px;
+  width: 100%;       /* پرعرض */
+  max-width: 500px;  /* حد اکثر عرض */
+  height: 400px;     /* ارتفاع ثابت */
+  position: relative;
+  overflow: visible;
+  margin: 0 auto;    /* وسط چین */
 }
 .card svg {
   position:absolute;
