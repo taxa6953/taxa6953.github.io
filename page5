@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"> <!-- زبان انگلیسی چون محتوای عکس انگلیسی است؛ اگر نیاز به RTL دارید، dir="rtl" کنید -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Space NFT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!-- برای آیکون‌ها -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(-45deg, #1e3c72, #2a5298, #3b82c4, #60a5fa);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px; /* شبیه عرض موبایل در عکس */
+            height: 85vh;
+            background-color: rgba(0, 0, 0, 0.6); /* نیمه‌شفاف سیاه برای کنتراست با گرادیانت */
+            border-radius: 30px; /* گوشه‌های گرد بیشتر شبیه عکس */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-container {
+            height: 50%; /* نیمی از ارتفاع برای تصویر */
+            background: url('https://via.placeholder.com/400x300?text=Blue+Robot+Head') center/cover no-repeat; /* جایگزین با لینک تصویر واقعی کنید */
+            position: relative;
+        }
+
+        .top-icons {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .top-icons i {
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .bid-info {
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .bid-info .title {
+            font-weight: bold;
+        }
+
+        .bid-info .price {
+            color: #fff;
+        }
+
+        .bid-info .tag {
+            color: #ccc;
+        }
+
+        .content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #ddd;
+        }
+
+        .bid-button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .bid-button i {
+            font-size: 18px;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                width: 50%;
+                max-width: 600px;
+                height: 70vh;
+            }
+
+            .image-container {
+                height: 60%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <div class="top-icons">
+                <i class="fas fa-arrow-left"></i> <!-- آیکون بازگشت -->
+                <i class="far fa-heart"></i> <!-- آیکون قلب -->
+            </div>
+            <div class="bid-info">
+                <span class="title">Men Bid</span>
+                <span class="price">3.4 ETH</span>
+                <span class="tag">@beez</span>
+            </div>
+        </div>
+        <div class="content">
+            <div>
+                <h1 class="title">DREAM SPACE</h1>
+                <p class="description">
+                    The NFT captures the quiet chaos of dreams — fluid colors, weightless forms, and infinite depth. Get lost in a space that feels familiar yet foreign. And more.
+                </p>
+            </div>
+            <button class="bid-button">
+                <i class="fas fa-gavel"></i> Make Bid
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>
