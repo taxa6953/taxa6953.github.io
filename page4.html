@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>زمینه آبی گرادیانت و مستطیل گرد</title>
+<style>
+body {
+  margin: 0;
+  overflow: hidden; /* برای جلوگیری از اسکرول */
+  background: linear-gradient(to right, #4CAF50, #2196F3); /* گرادیانت آبی */
+  animation: gradientAnimation 10s ease infinite; /* انیمیشن گرادیانت */
+  height: 100vh; /* ارتفاع صفحه کامل */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.rectangle {
+  width: 80%; /* عرض مستطیل نسبت به صفحه */
+  max-width: 600px; /* حداکثر عرض مستطیل */
+  height: 200px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* سایه برای زیبایی */
+}
+</style>
+</head>
+<body>
+
+<div class="rectangle">
+  <!-- محتوای مستطیل در اینجا قرار می گیرد -->
+</div>
+
+</body>
+
+</html>
