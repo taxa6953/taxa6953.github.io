@@ -1,47 +1,129 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>زمینه آبی گرادیانت و مستطیل گرد</title>
-<style>
-body {
-  margin: 0;
-  overflow: hidden; /* برای جلوگیری از اسکرول */
-  background: linear-gradient(to right, #4CAF50, #2196F3); /* گرادیانت آبی */
-  animation: gradientAnimation 10s ease infinite; /* انیمیشن گرادیانت */
-  height: 100vh; /* ارتفاع صفحه کامل */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a2b6d 0%, #3a7bd5 100%);
+            font-family: -apple-system, sans-serif;
+        }
 
-@keyframes gradientAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
+        .card {
+            width: 360px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+        }
 
-.rectangle {
-  width: 80%; /* عرض مستطیل نسبت به صفحه */
-  max-width: 600px; /* حداکثر عرض مستطیل */
-  height: 200px;
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* سایه برای زیبایی */
-}
-</style>
+        .image-container {
+            position: relative;
+            height: 300px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .buttons {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+        }
+
+        .button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .info {
+            padding: 20px;
+            color: white;
+        }
+
+        .bid-info {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .bid-info img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .title {
+            font-size: 24px;
+            margin: 15px 0;
+        }
+
+        .description {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .bid-button {
+            background: white;
+            color: black;
+            padding: 15px;
+            text-align: center;
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-
-<div class="rectangle">
-  <!-- محتوای مستطیل در اینجا قرار می گیرد -->
-</div>
-
+    <div class="card">
+        <div class="image-container">
+            <!-- ربات عکس را اینجا قرار دهید -->
+            <img src="robot-image.jpg" alt="Dream Space">
+            <div class="buttons">
+                <div class="button">←</div>
+                <div class="button">♡</div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <div class="bid-info">
+                <img src="profile.jpg" alt="Profile">
+                <div>
+                    <div>Min Bid</div>
+                    <div style="font-size: 18px"><b>3.4 ETH</b> @beezz</div>
+                </div>
+            </div>
+            
+            <h2 class="title">DREAM SPACE</h2>
+            <p class="description">
+                This NFT captures the quiet chaos of dreams — fluid colors, weightless forms, and infinite depth. 
+                Every pixel invites you to pause, wonder, and get lost in a space that feels familiar yet unknown...
+            </p>
+            
+            <div class="bid-button">Make Bid</div>
+        </div>
+    </div>
 </body>
 
 </html>
