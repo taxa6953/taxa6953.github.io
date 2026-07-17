@@ -80,24 +80,29 @@ body{
     backdrop-filter:blur(8px);
     z-index:999;
 }
-
 .modal-content{
-    width:90%;
-    max-width:650px;
-    max-height:80vh;
+    width:95%;
+    max-width:750px;
+    max-height:85vh;
     overflow-y:auto;
 
-    background:white;
-    color:#333;
+    background:linear-gradient(
+        to bottom,
+        #1d2147,
+        #2b2958,
+        #5d315d,
+        #8f4666
+    );
 
-    margin:10vh auto;
-    padding:30px;
+    color:white;
 
-    border-radius:20px;
+    margin:4vh auto;
+    padding:35px;
 
-    box-shadow:0 0 30px rgba(0,0,0,.3);
+    border-radius:25px;
+
+    box-shadow:0 0 40px rgba(0,0,0,.5);
 }
-
 .modal-content h2{
     margin-bottom:20px;
 }
@@ -112,6 +117,54 @@ body{
     font-size:35px;
     cursor:pointer;
     color:#888;
+}
+    .love-letter{
+    text-align:center;
+    color:white;
+}
+
+.verse{
+    font-size:26px;
+    line-height:1.9;
+    font-weight:700;
+    margin:15px 0 30px;
+    text-shadow:0 2px 10px rgba(0,0,0,.4);
+}
+
+.heart{
+    font-size:28px;
+    color:#ff8fa3;
+    margin:15px 0;
+    position:relative;
+}
+
+.heart::before,
+.heart::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    width:110px;
+    height:1px;
+    background:#ff8fa3;
+}
+
+.heart::before{
+    right:55%;
+}
+
+.heart::after{
+    left:55%;
+}
+
+.modal-content h2{
+    text-align:center;
+    color:#ffd6de;
+    margin-bottom:25px;
+    font-size:32px;
+}
+
+.close{
+    color:white;
 }
 </style>
 </head>
@@ -132,40 +185,65 @@ body{
         <span class="close" id="closeBtn">&times;</span>
 
         <h2>برای عارفه ❤️</h2>
+<div class="love-letter">
 
-        <p>
-            شدی بال و پرم نور چش من تاج سرم<br><br>
+    <div class="heart">❤</div>
 
-            نمیپره عطرت از سرم تویی دلبرم<br><br>
+    <div class="verse">
+        شدی بال و پرم نور چش من تاج سرم<br>
+        نمیپره عطرت از سرم تویی دلبرم
+    </div>
 
-            تو کارتو بلدی دیوونه ات شدم من بعد از این<br><br>
+    <div class="heart">❤</div>
 
-            چشات قفلی داره پدرم در اومد لعنتی<br><br>
+    <div class="verse">
+        تو کارتو بلدی دیوونه ات شدم من بعد از این<br>
+        چشات قفلی داره پدرم در اومد لعنتی
+    </div>
 
-            جز بغلت من جایی و آدرس ندارم<br><br>
+    <div class="heart">❤</div>
 
-            به هیچکسی حس ندارم<br><br>
+    <div class="verse">
+        جز بغلت من جایی و آدرس ندارم<br>
+        به هیچکسی حس ندارم<br>
+        قلبم دیگه نصف برا تو نصف برا من
+    </div>
 
-            قلبم دیگه نصف برا تو نصف برا من<br><br>
+    <div class="heart">❤</div>
 
-            بلا ملا ای طلا ملا نباشی دل میره به فنا<br><br>
+    <div class="verse">
+        بلا ملا ای طلا ملا نباشی دل میره به فنا<br>
+        شبا شبا هی هواییتم نزاری هیچ وقت تنها تنها
+    </div>
 
-            شبا شبا هی هواییتم نزاری هیچ وقت تنها تنها<br><br>
+    <div class="heart">❤</div>
 
-            تو کارتو بلدی دیوونه ات شدم من بعد از این<br><br>
+    <div class="verse">
+        تو کارتو بلدی دیوونه ات شدم من بعد از این<br>
+        چشات قفلی داره پدرم در اومد لعنتی
+    </div>
 
-            چشات قفلی داره پدرم در اومد لعنتی<br><br>
+    <div class="heart">❤</div>
 
-            تو کارتو بلدی دیوونه ات شدم من بعد از این<br><br>
+    <div class="verse">
+        تو کارتو بلدی دیوونه ات شدم من بعد از این<br>
+        چشات قفلی داره پدرم در اومد عوضی
+    </div>
 
-            چشات قفلی داره پدرم در اومد عوضی<br><br>
+    <div class="heart">❤</div>
 
-            بلا ملا ای طلا ملا نباشی دل میره به فنا<br><br>
+    <div class="verse">
+        بلا ملا ای طلا ملا نباشی دل میره به فنا<br>
+        شبا شبا هی هواییتم نزاری هیچ وقت تنها تنها
+    </div>
 
-            شبا شبا هی هواییتم نزاری هیچ وقت تنها تنها<br><br>
+    <div class="heart">❤</div>
 
-            قلبم دیگه نصف برا تو نصف برا من
-        </p>
+    <div class="verse">
+        قلبم دیگه نصف برا تو نصف برا من
+    </div>
+
+</div>
 
     </div>
 </div>
