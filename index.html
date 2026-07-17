@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Background Image</title>
+<title>Interactive Image</title>
 
 <style>
 *{
@@ -15,15 +15,55 @@
 body{
     width:100vw;
     height:100vh;
-    background-image:url("07_17_2026_Zawa.jpeg"); /* آدرس عکس */
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
+    overflow:hidden;
+    position:relative;
+    background:#000;
+}
+
+/* تصویر زمینه */
+.bg{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+}
+
+/* المان کلیک‌شونده */
+.hotspot{
+    position:absolute;
+
+    /* تنظیم موقعیت */
+    top:40%;
+    left:50%;
+    transform:translate(-50%,-50%);
+
+    /* تنظیم اندازه */
+    font-size:70px;
+
+    /* تنظیم شفافیت */
+    opacity:0.8;
+
+    cursor:pointer;
+    user-select:none;
+}
+
+.hotspot:hover{
+    opacity:1;
 }
 </style>
 
 </head>
 <body>
+
+<img src="07_17_2026_Zawa.jpeg" class="bg" alt="Background">
+
+<div class="hotspot" onclick="showMessage()">🎵</div>
+
+<script>
+function showMessage(){
+    alert("روی استیکر کلیک شد!");
+}
+</script>
 
 </body>
 </html>
