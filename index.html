@@ -81,18 +81,29 @@ body{
     z-index:999;
 }
 .modal-content{
-    width:95%;
-    max-width:750px;
-    max-height:85vh;
+    width:90%;
+    max-width:650px;
+    max-height:80vh;
     overflow-y:auto;
 
-    background:linear-gradient(
-        to bottom,
-        #1d2147,
-        #2b2958,
-        #5d315d,
-        #8f4666
-    );
+    /* شیشه طلایی */
+    background:rgba(255,215,120,0.08);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,215,120,0.25);
+
+    color:#fff;
+
+    margin:10vh auto;
+    padding:30px;
+
+    border-radius:25px;
+
+    box-shadow:
+        0 8px 32px rgba(0,0,0,.35),
+        inset 0 1px 1px rgba(255,255,255,.1);
+}
 
     color:white;
 
@@ -104,19 +115,25 @@ body{
     box-shadow:0 0 40px rgba(0,0,0,.5);
 }
 .modal-content h2{
+.modal-content h2{
+    text-align:center;
     margin-bottom:20px;
+    color:#ffd97d;
+    text-shadow:0 0 15px rgba(255,215,120,.4);
 }
 
 .modal-content p{
-    line-height:2;
-    font-size:18px;
+    line-height:2.2;
+    font-size:20px;
+    text-align:center;
+    color:#ffffff;
 }
 
 .close{
     float:left;
     font-size:35px;
     cursor:pointer;
-    color:#888;
+    color:#ffd97d;
 }
     .love-letter{
     text-align:center;
