@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Interactive Image</title>
+<title>برای عارفه ❤️</title>
 
 <style>
 *{
@@ -16,11 +16,11 @@ body{
     width:100vw;
     height:100vh;
     overflow:hidden;
-    position:relative;
     background:#000;
+    position:relative;
 }
 
-/* تصویر زمینه */
+/* عکس زمینه */
 .bg{
     width:100%;
     height:100%;
@@ -28,41 +28,149 @@ body{
     display:block;
 }
 
-/* المان کلیک‌شونده */
+/* المان های کلیک شونده */
 .hotspot{
     position:absolute;
-
-    /* تنظیم موقعیت */
-    top:40%;
-    left:50%;
-    transform:translate(-50%,-50%);
-
-    /* تنظیم اندازه */
-    font-size:70px;
-
-    /* تنظیم شفافیت */
-    opacity:0.8;
-
     cursor:pointer;
     user-select:none;
+    transition:.3s;
 }
 
 .hotspot:hover{
-    opacity:1;
+    transform:scale(1.15);
+}
+
+/* موزیک */
+#musicBtn{
+    top:8%;
+    right:8%;
+    font-size:60px;
+    opacity:.8;
+}
+
+/* پاکت نامه */
+#letterBtn{
+    bottom:12%;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:75px;
+}
+
+/* پنجره شناور */
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(8px);
+    z-index:999;
+}
+
+.modal-content{
+    width:90%;
+    max-width:650px;
+    max-height:80vh;
+    overflow-y:auto;
+
+    background:white;
+    color:#333;
+
+    margin:10vh auto;
+    padding:30px;
+
+    border-radius:20px;
+
+    box-shadow:0 0 30px rgba(0,0,0,.3);
+}
+
+.modal-content h2{
+    margin-bottom:20px;
+}
+
+.modal-content p{
+    line-height:2;
+    font-size:18px;
+}
+
+.close{
+    float:left;
+    font-size:35px;
+    cursor:pointer;
+    color:#888;
 }
 </style>
-
 </head>
+
 <body>
 
-<img src="07_17_2026_Zawa.jpeg" class="bg" alt="Background">
+<img src="07_17_2026_Zawa.jpeg" class="bg">
 
-<div class="hotspot" onclick="showMessage()">🎵</div>
+<!-- دکمه موزیک -->
+<div id="musicBtn" class="hotspot">🎵</div>
+
+<!-- دکمه نامه -->
+<div id="letterBtn" class="hotspot">💌</div>
+
+<!-- موزیک -->
+<audio id="bgMusic">
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- پنجره نامه -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+
+        <span class="close" id="closeBtn">&times;</span>
+
+        <h2>برای عارفه ❤️</h2>
+
+        <p>
+            اینجا متن نامه‌ات را بنویس.<br><br>
+
+            هر متنی که دوست داری برای عارفه نمایش داده شود را جایگزین این متن کن.
+            می‌توانی چندین پاراگراف، شعر، خاطره یا هر متن دیگری داخل این بخش قرار بدهی.
+        </p>
+
+    </div>
+</div>
 
 <script>
-function showMessage(){
-    alert("روی استیکر کلیک شد!");
-}
+
+// موزیک
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+
+musicBtn.addEventListener("click", () => {
+
+    if(music.paused){
+        music.play();
+        musicBtn.style.opacity = "1";
+    }else{
+        music.pause();
+        musicBtn.style.opacity = "0.5";
+    }
+
+});
+
+// نامه
+const modal = document.getElementById("modal");
+const letterBtn = document.getElementById("letterBtn");
+const closeBtn = document.getElementById("closeBtn");
+
+letterBtn.onclick = () => {
+    modal.style.display = "block";
+};
+
+closeBtn.onclick = () => {
+    modal.style.display = "none";
+};
+
+window.onclick = (e) => {
+    if(e.target === modal){
+        modal.style.display = "none";
+    }
+};
+
 </script>
 
 </body>
