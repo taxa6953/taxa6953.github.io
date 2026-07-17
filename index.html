@@ -7,161 +7,109 @@
 
 <title>برای عارفه ❤️</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- INTRO -->
+<div class="overlay"></div>
 
-<div id="intro">
+<section class="hero">
 
-    <h1 class="intro-name">
-        عارفه
-    </h1>
+    <div class="top-icons">
+        <div>☰</div>
+        <div>♫</div>
+    </div>
 
-</div>
+    <div class="title">
+        <h1>برای عارفه</h1>
+        <span>❤</span>
+    </div>
 
-<!-- HEARTS -->
+    <div class="timeline">
 
-<div id="hearts"></div>
-
-<!-- MAIN -->
-
-<main id="mainContent">
-
-    <section class="hero">
-
-        <div class="hero-overlay"></div>
-
-        <div class="hero-content">
-
-            <h1>عارفه</h1>
-
-            <p>
-                Some people become memories.
-                <br>
-                Some become a part of your story.
-            </p>
-
-            <a href="#timeline" class="btn">
-                شروع سفر
-            </a>
-
+        <div class="item">
+            <div class="icon">♡</div>
+            <div>
+                <h3>آغاز آشنایی</h3>
+                <p>24 اردیبهشت 1405</p>
+                <small id="daysTogether"></small>
+            </div>
         </div>
 
-    </section>
+        <div class="line"></div>
 
-    <!-- TIMELINE -->
-
-    <section id="timeline" class="timeline">
-
-        <h2>لحظه‌های مهم</h2>
-
-        <div class="cards">
-
-            <div class="card">
-
-                <span>آغاز آشنایی</span>
-
-                <h3>24 اردیبهشت 1405</h3>
-
-                <div id="daysTogether" class="counter">
-                    0
-                </div>
-
-                <p>روز گذشته</p>
-
+        <div class="item">
+            <div class="icon">✩</div>
+            <div>
+                <h3>روز اولین خاطره</h3>
+                <p>15 خرداد 1405</p>
             </div>
-
-            <div class="card">
-
-                <span>اولین خاطره مهم</span>
-
-                <h3>15 خرداد 1405</h3>
-
-            </div>
-
-            <div class="card">
-
-                <span>تولد عارفه</span>
-
-                <h3>16 دی</h3>
-
-                <div id="birthdayLeft" class="counter">
-                    0
-                </div>
-
-                <p>روز باقی مانده</p>
-
-            </div>
-
         </div>
 
-    </section>
+        <div class="line"></div>
 
-    <!-- LETTER -->
+        <div class="item">
+            <div class="icon">🎂</div>
+            <div>
+                <h3>تولد عارفه</h3>
+                <p>16 دی</p>
+                <small id="birthdayLeft"></small>
+            </div>
+        </div>
 
-    <section class="letter-section">
+    </div>
 
-        <h2>یک یادگاری</h2>
+    <div class="quote">
+
+        <h2>
+            برای بعضی آدم‌ها...
+            <br>
+            هیچ جمله‌ای کافی نیست.
+        </h2>
+
+    </div>
+
+    <div class="envelope-wrapper">
 
         <div class="envelope" id="openEnvelope">
 
             <div class="flap"></div>
-
             <div class="body"></div>
 
-            <span>
-                ✉
-            </span>
+            <div class="heart">
+                ❤
+            </div>
 
         </div>
 
-        <p>
+        <button>
+            نامه‌ای برای عارفه
+        </button>
+
+        <span>
             برای باز کردن کلیک کن
-        </p>
+        </span>
 
-    </section>
+    </div>
 
-    <!-- FINAL -->
+    <div class="footer">
+        A R E F E H
+    </div>
 
-    <section class="final">
+</section>
 
-        <h2>
-            برای بعضی آدم‌ها...
-        </h2>
+<div class="modal" id="modal">
 
-        <p>
-            هیچ جمله‌ای کافی نیست.
-        </p>
+    <span id="closeModal">×</span>
 
-        <h1>
-            عارفه ❤️
-        </h1>
-
-    </section>
-
-</main>
-
-<!-- MODAL -->
-
-<div id="photoModal">
-
-    <span id="closeModal">
-        ×
-    </span>
-
-    <img src="images/arefeh.jpg" alt="Arefeh">
+    <img src="images/letter-photo.jpg">
 
 </div>
 
-<script src="js/main.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
