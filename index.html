@@ -118,11 +118,6 @@ body{
 <audio id="bgMusic" preload="auto">
     <source src="Telegram _ icyRemix – Bala Mala Mix.mp3" type="audio/mpeg">
 </audio>
-<!-- موزیک -->
-<audio id="bgMusic">
-    <source src="Telegram _ icyRemix – Bala Mala Mix.mp3" type="audio/mpeg">
-</audio>
-
 <!-- پنجره نامه -->
 <div id="modal" class="modal">
     <div class="modal-content">
@@ -180,21 +175,41 @@ const modal = document.getElementById("modal");
 const letterBtn = document.getElementById("letterBtn");
 const closeBtn = document.getElementById("closeBtn");
 
+    let musicReady = false;
+
+music.addEventListener("canplaythrough", () => {
+    musicReady = true;
+    console.log("Music Ready");
+});
+
+// شروع دانلود از لحظه ورود به صفحه
+window.addEventListener("load", () => {
+    music.load();
+});
+    
 letterBtn.onclick = async () => {
 
-    modal.style.display = "block";
+    if(!musicReady){
+        console.log("در حال آماده سازی موزیک...");
+    }
 
-    // شروع موزیک از ابتدا
+    // موزیک را از ابتدا اجرا کن
     music.pause();
     music.currentTime = 0;
 
     try{
         await music.play();
+
+        // بعد از شروع موزیک نامه باز شود
+        modal.style.display = "block";
+
     }catch(err){
         console.log(err);
+
+        // اگر خطا داد باز هم نامه باز شود
+        modal.style.display = "block";
     }
 };
-
 function closeLetter(){
 
     modal.style.display = "none";
