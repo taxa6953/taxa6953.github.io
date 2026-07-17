@@ -60,17 +60,21 @@ h1{
 
 .heart{
     position:fixed;
-    font-size:25px;
-    animation:float 10s linear infinite;
+    color:white;
+    pointer-events:none;
     opacity:.8;
+    z-index:999;
+    animation: floatUp linear forwards;
 }
 
-@keyframes float{
+@keyframes floatUp{
     from{
-        transform:translateY(100vh) rotate(0deg);
+        transform:translateY(0) rotate(0deg);
+        opacity:0.9;
     }
     to{
-        transform:translateY(-100px) rotate(360deg);
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
     }
 }
 
@@ -177,18 +181,33 @@ h1{
 </div>
 
 <script>
-function showMessage(){
-    document.getElementById("special").style.display="block";
+function createHeart() {
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+    heart.innerHTML = "❤";
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    // شروع از هر نقطه صفحه
+    heart.style.top = Math.random() * 100 + "vh";
+
+    heart.style.fontSize = (15 + Math.random() * 30) + "px";
+
+    heart.style.animationDuration = (6 + Math.random() * 8) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 14000);
 }
 
-for(let i=0;i<35;i++){
-    let heart=document.createElement("div");
-    heart.className="heart";
-    heart.innerHTML="❤";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.animationDuration=(Math.random()*5+5)+"s";
-    heart.style.fontSize=(Math.random()*20+15)+"px";
-    document.body.appendChild(heart);
+setInterval(createHeart, 250);
+
+// تعداد اولیه قلب‌ها
+for(let i = 0; i < 50; i++){
+    createHeart();
 }
 </script>
 
