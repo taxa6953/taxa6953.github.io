@@ -72,8 +72,31 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-text-align:center;
 position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+
+background:url("../images/A518409E-99F2-4DA8-BB95-A14E35C9098D.png");
+background-size:cover;
+background-position:center;
+
+filter:blur(8px);
+transform:scale(1.08);
+
+z-index:-2;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.55);
+z-index:-1;
 }
 
 .hero-content h1{
