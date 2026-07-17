@@ -19,11 +19,11 @@ body{
     background:#000;
     position:relative;
     background:linear-gradient(
-        to bottom,
-        #fff1f2,
-        #ffe4e6,
-        #fce7f3
-    );
+    to bottom,
+    #1f1a12,
+    #2d2416,
+    #40311a
+);
 }
 
 /* عکس زمینه */
@@ -113,12 +113,11 @@ body{
 
 <img src="07_17_2026_Zawa.jpeg" class="bg">
 
-<!-- دکمه موزیک -->
-<div id="musicBtn" class="hotspot">🎵</div>
-
 <!-- دکمه نامه -->
 <div id="letterBtn" class="hotspot">💌</div>
-
+<audio id="bgMusic" preload="auto">
+    <source src="Telegram _ icyRemix – Bala Mala Mix.mp3" type="audio/mpeg">
+</audio>
 <!-- موزیک -->
 <audio id="bgMusic">
     <source src="Telegram _ icyRemix – Bala Mala Mix.mp3" type="audio/mpeg">
@@ -144,38 +143,44 @@ body{
 
 <script>
 
-// موزیک
 const music = document.getElementById("bgMusic");
-const musicBtn = document.getElementById("musicBtn");
 
-musicBtn.addEventListener("click", () => {
+// پیش بارگذاری فایل
+music.src = "Telegram _ icyRemix – Bala Mala Mix.mp3";
+music.load();
 
-    if(music.paused){
-        music.play();
-        musicBtn.style.opacity = "1";
-    }else{
-        music.pause();
-        musicBtn.style.opacity = "0.5";
-    }
-
-});
-
-// نامه
 const modal = document.getElementById("modal");
 const letterBtn = document.getElementById("letterBtn");
 const closeBtn = document.getElementById("closeBtn");
 
-letterBtn.onclick = () => {
+letterBtn.onclick = async () => {
+
     modal.style.display = "block";
+
+    // شروع موزیک از ابتدا
+    music.pause();
+    music.currentTime = 0;
+
+    try{
+        await music.play();
+    }catch(err){
+        console.log(err);
+    }
 };
 
-closeBtn.onclick = () => {
+function closeLetter(){
+
     modal.style.display = "none";
-};
+
+    music.pause();
+    music.currentTime = 0;
+}
+
+closeBtn.onclick = closeLetter;
 
 window.onclick = (e) => {
     if(e.target === modal){
-        modal.style.display = "none";
+        closeLetter();
     }
 };
 
