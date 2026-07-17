@@ -1,215 +1,167 @@
-      <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>برای عارفه ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Vazirmatn',sans-serif;
-}
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
-body{
-    background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffb199);
-    min-height:100vh;
-    overflow-x:hidden;
-    color:white;
-}
-
-.container{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    min-height:100vh;
-    padding:20px;
-}
-
-.glass{
-    background:rgba(255,255,255,0.12);
-    backdrop-filter:blur(15px);
-    border:1px solid rgba(255,255,255,0.2);
-    border-radius:30px;
-    padding:40px;
-    max-width:850px;
-    box-shadow:0 10px 40px rgba(0,0,0,0.25);
-}
-
-h1{
-    font-size:4rem;
-    margin-bottom:15px;
-}
-
-.subtitle{
-    font-size:1.3rem;
-    opacity:.95;
-    margin-bottom:25px;
-}
-
-.message{
-    line-height:2.2;
-    font-size:1.15rem;
-}
-
-.heart{
-    position:fixed;
-    color:white;
-    pointer-events:none;
-    opacity:.8;
-    z-index:999;
-    animation: floatUp linear forwards;
-}
-
-@keyframes floatUp{
-    from{
-        transform:translateY(0) rotate(0deg);
-        opacity:0.9;
-    }
-    to{
-        transform:translateY(-120vh) rotate(360deg);
-        opacity:0;
-    }
-}
-
-.btn{
-    margin-top:30px;
-    border:none;
-    padding:15px 35px;
-    border-radius:50px;
-    background:white;
-    color:#ff4f81;
-    font-size:18px;
-    cursor:pointer;
-    font-weight:bold;
-    transition:.3s;
-}
-
-.btn:hover{
-    transform:scale(1.05);
-}
-
-.hidden{
-    display:none;
-    margin-top:25px;
-    animation:fadeIn 2s;
-}
-
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-.final{
-    font-size:1.4rem;
-    line-height:2;
-}
-
-.signature{
-    margin-top:25px;
-    font-size:1.2rem;
-    font-weight:bold;
-}
-
-@media(max-width:768px){
-    h1{
-        font-size:2.5rem;
-    }
-}
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<div class="container">
-    <div class="glass">
+<!-- INTRO -->
 
-        <h1>عارفه ❤️</h1>
+<div id="intro">
 
-        <p class="subtitle">
-            این صفحه فقط برای یک نفر ساخته شده...
-        </p>
+    <h1 class="intro-name">
+        عارفه
+    </h1>
 
-        <div class="message">
-            بعضی آدم‌ها بدون اینکه متوجه باشند،
-            با حضورشان روزهای معمولی را متفاوت می‌کنند.
-            <br><br>
-            بعضی لبخندها دلیل آرامش می‌شوند،
-            بعضی حرف‌ها تا مدت‌ها در ذهن می‌مانند
-            و بعضی آدم‌ها ارزشمندتر از چیزی هستند
-            که بتوان با چند جمله توصیفشان کرد.
-            <br><br>
-            تو یکی از همان آدم‌هایی...
-        </div>
-
-        <button class="btn" onclick="showMessage()">
-            یک پیام ویژه برای عارفه
-        </button>
-
-        <div id="special" class="hidden">
-            <div class="final">
-                شاید همیشه نتوان همه چیز را با کلمات گفت،
-                اما این صفحه برای این ساخته شد که بدانی:
-                <br><br>
-                وجودت ارزشمند است،
-                لبخندت قشنگ است،
-                و حضورت بیشتر از چیزی که فکر می‌کنی
-                می‌تواند حال آدم‌ها را بهتر کند.
-                <br><br>
-                امیدوارم هر آرزویی که در قلبت داری،
-                روزی به بهترین شکل ممکن به واقعیت تبدیل شود. ✨
-            </div>
-
-            <div class="signature">
-                با احترام و بهترین آرزوها 🌹
-            </div>
-        </div>
-
-    </div>
 </div>
 
-<script>
-function createHeart() {
-    const heart = document.createElement("div");
+<!-- HEARTS -->
 
-    heart.className = "heart";
-    heart.innerHTML = "❤";
+<div id="hearts"></div>
 
-    heart.style.left = Math.random() * 100 + "vw";
+<!-- MAIN -->
 
-    // شروع از هر نقطه صفحه
-    heart.style.top = Math.random() * 100 + "vh";
+<main id="mainContent">
 
-    heart.style.fontSize = (15 + Math.random() * 30) + "px";
+    <section class="hero">
 
-    heart.style.animationDuration = (6 + Math.random() * 8) + "s";
+        <div class="hero-overlay"></div>
 
-    document.body.appendChild(heart);
+        <div class="hero-content">
 
-    setTimeout(() => {
-        heart.remove();
-    }, 14000);
-}
+            <h1>عارفه</h1>
 
-setInterval(createHeart, 250);
+            <p>
+                Some people become memories.
+                <br>
+                Some become a part of your story.
+            </p>
 
-// تعداد اولیه قلب‌ها
-for(let i = 0; i < 50; i++){
-    createHeart();
-}
-</script>
+            <a href="#timeline" class="btn">
+                شروع سفر
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- TIMELINE -->
+
+    <section id="timeline" class="timeline">
+
+        <h2>لحظه‌های مهم</h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <span>آغاز آشنایی</span>
+
+                <h3>24 اردیبهشت 1405</h3>
+
+                <div id="daysTogether" class="counter">
+                    0
+                </div>
+
+                <p>روز گذشته</p>
+
+            </div>
+
+            <div class="card">
+
+                <span>اولین خاطره مهم</span>
+
+                <h3>15 خرداد 1405</h3>
+
+            </div>
+
+            <div class="card">
+
+                <span>تولد عارفه</span>
+
+                <h3>16 دی</h3>
+
+                <div id="birthdayLeft" class="counter">
+                    0
+                </div>
+
+                <p>روز باقی مانده</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- LETTER -->
+
+    <section class="letter-section">
+
+        <h2>یک یادگاری</h2>
+
+        <div class="envelope" id="openEnvelope">
+
+            <div class="flap"></div>
+
+            <div class="body"></div>
+
+            <span>
+                ✉
+            </span>
+
+        </div>
+
+        <p>
+            برای باز کردن کلیک کن
+        </p>
+
+    </section>
+
+    <!-- FINAL -->
+
+    <section class="final">
+
+        <h2>
+            برای بعضی آدم‌ها...
+        </h2>
+
+        <p>
+            هیچ جمله‌ای کافی نیست.
+        </p>
+
+        <h1>
+            عارفه ❤️
+        </h1>
+
+    </section>
+
+</main>
+
+<!-- MODAL -->
+
+<div id="photoModal">
+
+    <span id="closeModal">
+        ×
+    </span>
+
+    <img src="images/arefeh.jpg" alt="Arefeh">
+
+</div>
+
+<script src="js/main.js"></script>
 
 </body>
 </html>
