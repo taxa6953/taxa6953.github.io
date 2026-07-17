@@ -57,11 +57,18 @@ body{
 
 /* پاکت نامه */
 #letterBtn{
+    position:absolute;
+
     bottom:25%;
     left:46%;
-    transform:translateX(-40%);
-    font-size:200px;
-    filter: brightness(0%);
+
+    width:120px;
+    height:120px;
+
+    background:transparent;
+
+    opacity:0;
+    cursor:pointer;
 }
 
 /* پنجره شناور */
@@ -113,8 +120,7 @@ body{
 
 <img src="07_17_2026_Zawa.jpeg" class="bg">
 
-<!-- دکمه نامه -->
-<div id="letterBtn" class="hotspot">💌</div>
+
 <audio id="bgMusic" preload="auto">
     <source src="Telegram _ icyRemix – Bala Mala Mix.mp3" type="audio/mpeg">
 </audio>
@@ -168,7 +174,6 @@ body{
 const music = document.getElementById("bgMusic");
 
 // پیش بارگذاری فایل
-music.src = "Telegram _ icyRemix – Bala Mala Mix.mp3";
 music.load();
 
 const modal = document.getElementById("modal");
