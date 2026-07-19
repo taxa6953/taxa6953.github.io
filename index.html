@@ -18,27 +18,43 @@ href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 }
 
 body{
-    background:#f5f5f5;
-    height:100vh;
+    margin:0;
+    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    font-family:tahoma;
+
+    background:
+    radial-gradient(circle at top,
+    #5d4b3a 0%,
+    #2b2119 45%,
+    #13100d 100%);
+
+    overflow:hidden;
 }
 
 .swiper{
     width:100%;
-    max-width:900px;
-    padding:50px 0;
+    max-width:1400px;
+    padding:80px 0;
 }
 
 .swiper-slide{
-    width:280px;
-    height:420px;
-    border-radius:25px;
+
+    width:500px;
+    height:700px;
+
+    border-radius:35px;
     overflow:hidden;
-    background:#fff;
-    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+    0 30px 80px rgba(0,0,0,.45);
 }
 
 .swiper-slide img{
@@ -46,7 +62,6 @@ body{
     height:100%;
     object-fit:cover;
 }
-
 </style>
 </head>
 
@@ -84,24 +99,33 @@ body{
 
 new Swiper(".mySwiper", {
 
-    effect: "coverflow",
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: "auto",
+    effect:"coverflow",
 
-    coverflowEffect: {
-        rotate: 0,
-        stretch: 40,
-        depth: 150,
-        modifier: 1.5,
-        scale: 0.85,
-        slideShadows: false
-    },
+    centeredSlides:true,
 
-    loop: true
+    slidesPerView:"auto",
+
+    grabCursor:true,
+
+    loop:true,
+
+    coverflowEffect:{
+
+        rotate:0,
+
+        stretch:100,
+
+        depth:250,
+
+        modifier:2,
+
+        scale:0.8,
+
+        slideShadows:false
+
+    }
 
 });
-
 </script>
 
 </body>
